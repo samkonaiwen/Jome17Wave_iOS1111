@@ -78,7 +78,7 @@
                                     <outlet property="delegate" destination="P32-7a-Izj" id="2o0-2E-MCq"/>
                                 </connections>
                             </scrollView>
-                            <searchBar contentMode="redraw" placeholder="搜尋" translatesAutoresizingMaskIntoConstraints="NO" id="zXx-lP-I2i">
+                            <searchBar contentMode="redraw" placeholder="搜尋" showsCancelButton="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zXx-lP-I2i">
                                 <rect key="frame" x="0.0" y="88" width="414" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="8ol-74-cT9"/>
