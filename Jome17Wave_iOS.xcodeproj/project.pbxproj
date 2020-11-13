@@ -30,6 +30,21 @@
 		22C77FBF255B971900D0F2D0 /* MapEastTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C77FBE255B971900D0F2D0 /* MapEastTableViewController.swift */; };
 		22C77FC3255BBF2C00D0F2D0 /* MapSouthTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C77FC2255BBF2C00D0F2D0 /* MapSouthTableViewController.swift */; };
 		22C77FC6255BC5D500D0F2D0 /* MapWestTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C77FC5255BC5D500D0F2D0 /* MapWestTableViewController.swift */; };
+		893E8296255BE91D00AB61AE /* PersonalGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 893E8295255BE91D00AB61AE /* PersonalGroup.swift */; };
+		893E8299255BE9BA00AB61AE /* AllGroupsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 893E8298255BE9BA00AB61AE /* AllGroupsViewController.swift */; };
+		893E829C255BE9DA00AB61AE /* ComingGroupsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 893E829B255BE9DA00AB61AE /* ComingGroupsViewController.swift */; };
+		893E829F255BE9ED00AB61AE /* FinishedGroupsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 893E829E255BE9ED00AB61AE /* FinishedGroupsViewController.swift */; };
+		893E82A2255BEA1000AB61AE /* GroupCenterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 893E82A1255BEA1000AB61AE /* GroupCenterViewController.swift */; };
+		893E82A5255BEA2900AB61AE /* LastGroupsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 893E82A4255BEA2900AB61AE /* LastGroupsViewController.swift */; };
+		893E82A9255BEB3300AB61AE /* GroupListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 893E82A7255BEB3300AB61AE /* GroupListTableViewCell.swift */; };
+		893E82AA255BEB3300AB61AE /* GroupListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 893E82A8255BEB3300AB61AE /* GroupListTableViewCell.xib */; };
+		893E82AD255D1C9D00AB61AE /* GroupInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 893E82AC255D1C9D00AB61AE /* GroupInfoViewController.swift */; };
+		893E82B0255D595400AB61AE /* ConnectionResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 893E82AF255D595400AB61AE /* ConnectionResponse.swift */; };
+		893E82B8255E6DDD00AB61AE /* InsertGroupTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 893E82B7255E6DDD00AB61AE /* InsertGroupTableViewController.swift */; };
+		893E82BB255E6E2900AB61AE /* SelectMemberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 893E82BA255E6E2900AB61AE /* SelectMemberViewController.swift */; };
+		893E82BF255E6ED400AB61AE /* MemberListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 893E82BD255E6ED400AB61AE /* MemberListTableViewCell.swift */; };
+		893E82C0255E6ED400AB61AE /* MemberListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 893E82BE255E6ED400AB61AE /* MemberListTableViewCell.xib */; };
+		893E82C3255E715D00AB61AE /* Member.swift in Sources */ = {isa = PBXBuildFile; fileRef = 893E82C2255E715D00AB61AE /* Member.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,6 +73,21 @@
 		22C77FBE255B971900D0F2D0 /* MapEastTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapEastTableViewController.swift; sourceTree = "<group>"; };
 		22C77FC2255BBF2C00D0F2D0 /* MapSouthTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapSouthTableViewController.swift; sourceTree = "<group>"; };
 		22C77FC5255BC5D500D0F2D0 /* MapWestTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapWestTableViewController.swift; sourceTree = "<group>"; };
+		893E8295255BE91D00AB61AE /* PersonalGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalGroup.swift; sourceTree = "<group>"; };
+		893E8298255BE9BA00AB61AE /* AllGroupsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllGroupsViewController.swift; sourceTree = "<group>"; };
+		893E829B255BE9DA00AB61AE /* ComingGroupsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComingGroupsViewController.swift; sourceTree = "<group>"; };
+		893E829E255BE9ED00AB61AE /* FinishedGroupsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinishedGroupsViewController.swift; sourceTree = "<group>"; };
+		893E82A1255BEA1000AB61AE /* GroupCenterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupCenterViewController.swift; sourceTree = "<group>"; };
+		893E82A4255BEA2900AB61AE /* LastGroupsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LastGroupsViewController.swift; sourceTree = "<group>"; };
+		893E82A7255BEB3300AB61AE /* GroupListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupListTableViewCell.swift; sourceTree = "<group>"; };
+		893E82A8255BEB3300AB61AE /* GroupListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GroupListTableViewCell.xib; sourceTree = "<group>"; };
+		893E82AC255D1C9D00AB61AE /* GroupInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupInfoViewController.swift; sourceTree = "<group>"; };
+		893E82AF255D595400AB61AE /* ConnectionResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionResponse.swift; sourceTree = "<group>"; };
+		893E82B7255E6DDD00AB61AE /* InsertGroupTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsertGroupTableViewController.swift; sourceTree = "<group>"; };
+		893E82BA255E6E2900AB61AE /* SelectMemberViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectMemberViewController.swift; sourceTree = "<group>"; };
+		893E82BD255E6ED400AB61AE /* MemberListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberListTableViewCell.swift; sourceTree = "<group>"; };
+		893E82BE255E6ED400AB61AE /* MemberListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MemberListTableViewCell.xib; sourceTree = "<group>"; };
+		893E82C2255E715D00AB61AE /* Member.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Member.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -153,6 +183,7 @@
 		227D2823254BBFAC00D24B8E /* MoreStoryBoard */ = {
 			isa = PBXGroup;
 			children = (
+				893E828C255BE89F00AB61AE /* Group */,
 				2208B7112551826300D4A9C1 /* Common */,
 				2208B7082551815500D4A9C1 /* Map */,
 				2208B7062551810B00D4A9C1 /* StoryBoard */,
@@ -164,6 +195,52 @@
 				227D2832254BBFAE00D24B8E /* Info.plist */,
 			);
 			path = MoreStoryBoard;
+			sourceTree = "<group>";
+		};
+		893E828C255BE89F00AB61AE /* Group */ = {
+			isa = PBXGroup;
+			children = (
+				893E828F255BE8E500AB61AE /* Model */,
+				893E828E255BE8D500AB61AE /* ViewControllers */,
+				893E828D255BE8B500AB61AE /* Views */,
+			);
+			path = Group;
+			sourceTree = "<group>";
+		};
+		893E828D255BE8B500AB61AE /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				893E82A7255BEB3300AB61AE /* GroupListTableViewCell.swift */,
+				893E82A8255BEB3300AB61AE /* GroupListTableViewCell.xib */,
+				893E82BD255E6ED400AB61AE /* MemberListTableViewCell.swift */,
+				893E82BE255E6ED400AB61AE /* MemberListTableViewCell.xib */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		893E828E255BE8D500AB61AE /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				893E8298255BE9BA00AB61AE /* AllGroupsViewController.swift */,
+				893E829B255BE9DA00AB61AE /* ComingGroupsViewController.swift */,
+				893E829E255BE9ED00AB61AE /* FinishedGroupsViewController.swift */,
+				893E82A1255BEA1000AB61AE /* GroupCenterViewController.swift */,
+				893E82A4255BEA2900AB61AE /* LastGroupsViewController.swift */,
+				893E82AC255D1C9D00AB61AE /* GroupInfoViewController.swift */,
+				893E82B7255E6DDD00AB61AE /* InsertGroupTableViewController.swift */,
+				893E82BA255E6E2900AB61AE /* SelectMemberViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		893E828F255BE8E500AB61AE /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				893E8295255BE91D00AB61AE /* PersonalGroup.swift */,
+				893E82AF255D595400AB61AE /* ConnectionResponse.swift */,
+				893E82C2255E715D00AB61AE /* Member.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -228,7 +305,9 @@
 				224E870225539B710035CF61 /* Group.storyboard in Resources */,
 				220CD9372552AEF100C325F5 /* Map.storyboard in Resources */,
 				220CD93C2552AFC200C325F5 /* Report.storyboard in Resources */,
+				893E82C0255E6ED400AB61AE /* MemberListTableViewCell.xib in Resources */,
 				227D282E254BBFAE00D24B8E /* Assets.xcassets in Resources */,
+				893E82AA255BEB3300AB61AE /* GroupListTableViewCell.xib in Resources */,
 				224E87082553BB710035CF61 /* MapListTableViewCell.xib in Resources */,
 				227D282C254BBFAC00D24B8E /* Main.storyboard in Resources */,
 			);
@@ -245,17 +324,30 @@
 				224E87142554042D0035CF61 /* MapInsertTableViewController.swift in Sources */,
 				227D2829254BBFAC00D24B8E /* ViewController.swift in Sources */,
 				2208B7182551869400D4A9C1 /* Map.swift in Sources */,
+				893E82A5255BEA2900AB61AE /* LastGroupsViewController.swift in Sources */,
+				893E829C255BE9DA00AB61AE /* ComingGroupsViewController.swift in Sources */,
+				893E82BB255E6E2900AB61AE /* SelectMemberViewController.swift in Sources */,
 				224E870C2553E3AC0035CF61 /* MapNorthTableViewController.swift in Sources */,
 				227D2825254BBFAC00D24B8E /* AppDelegate.swift in Sources */,
+				893E829F255BE9ED00AB61AE /* FinishedGroupsViewController.swift in Sources */,
 				22C77FC3255BBF2C00D0F2D0 /* MapSouthTableViewController.swift in Sources */,
+				893E82B0255D595400AB61AE /* ConnectionResponse.swift in Sources */,
+				893E8299255BE9BA00AB61AE /* AllGroupsViewController.swift in Sources */,
 				2208B7132551827A00D4A9C1 /* Common.swift in Sources */,
 				22C77FBC255B922600D0F2D0 /* MapViewController.swift in Sources */,
+				893E82BF255E6ED400AB61AE /* MemberListTableViewCell.swift in Sources */,
 				2224A2CD2558F89A00084E63 /* MapUpdateTableViewController.swift in Sources */,
 				227D2827254BBFAC00D24B8E /* SceneDelegate.swift in Sources */,
 				224E87072553BB710035CF61 /* MapListTableViewCell.swift in Sources */,
+				893E82C3255E715D00AB61AE /* Member.swift in Sources */,
 				22C77FC6255BC5D500D0F2D0 /* MapWestTableViewController.swift in Sources */,
+				893E82A9255BEB3300AB61AE /* GroupListTableViewCell.swift in Sources */,
 				220CD9482552B62E00C325F5 /* MapDetailTableViewController.swift in Sources */,
+				893E82B8255E6DDD00AB61AE /* InsertGroupTableViewController.swift in Sources */,
 				22C77FBF255B971900D0F2D0 /* MapEastTableViewController.swift in Sources */,
+				893E8296255BE91D00AB61AE /* PersonalGroup.swift in Sources */,
+				893E82AD255D1C9D00AB61AE /* GroupInfoViewController.swift in Sources */,
+				893E82A2255BEA1000AB61AE /* GroupCenterViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
