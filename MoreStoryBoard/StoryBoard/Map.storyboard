@@ -33,7 +33,7 @@
             <objects>
                 <tableViewController id="byq-HL-7OS" customClass="MapEastTableViewController" customModule="Jome17Wave_iOS" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="zcq-eK-fUt">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="675"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="619"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
@@ -51,17 +51,20 @@
                             <outlet property="delegate" destination="byq-HL-7OS" id="tco-wd-hCR"/>
                         </connections>
                     </tableView>
+                    <connections>
+                        <outlet property="eastTableView" destination="zcq-eK-fUt" id="CHU-NP-U7b"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Kkm-p5-q7c" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-480" y="56"/>
+            <point key="canvasLocation" x="-210" y="556"/>
         </scene>
         <!--Map South Table View Controller-->
         <scene sceneID="Kbx-r1-x0P">
             <objects>
                 <tableViewController id="1d9-gP-Q1F" customClass="MapSouthTableViewController" customModule="Jome17Wave_iOS" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="8nq-NA-FZx">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="675"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="619"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
@@ -79,17 +82,20 @@
                             <outlet property="delegate" destination="1d9-gP-Q1F" id="u1c-aN-Xbg"/>
                         </connections>
                     </tableView>
+                    <connections>
+                        <outlet property="southTableView" destination="8nq-NA-FZx" id="4Jk-s9-h69"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Gkr-xU-RJR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="288" y="56"/>
+            <point key="canvasLocation" x="558" y="556"/>
         </scene>
         <!--Map West Table View Controller-->
         <scene sceneID="VTE-Bb-IiW">
             <objects>
                 <tableViewController id="QG7-RA-zh8" customClass="MapWestTableViewController" customModule="Jome17Wave_iOS" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="QCz-Ik-ksg">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="675"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="619"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
@@ -107,17 +113,20 @@
                             <outlet property="delegate" destination="QG7-RA-zh8" id="uxt-sE-L76"/>
                         </connections>
                     </tableView>
+                    <connections>
+                        <outlet property="westTableView" destination="QCz-Ik-ksg" id="ydi-Qd-JgX"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kV8-US-RCh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1122" y="57"/>
+            <point key="canvasLocation" x="1393" y="557"/>
         </scene>
         <!--Map North Table View Controller-->
         <scene sceneID="sCW-jW-qbk">
             <objects>
                 <tableViewController id="ydD-76-wuN" customClass="MapNorthTableViewController" customModule="Jome17Wave_iOS" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="r7C-sP-4k7">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="675"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="619"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
@@ -135,10 +144,44 @@
                             <outlet property="delegate" destination="ydD-76-wuN" id="rTs-Mw-qB7"/>
                         </connections>
                     </tableView>
+                    <connections>
+                        <outlet property="northTableView" destination="r7C-sP-4k7" id="15f-Bd-aV2"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MY1-yO-zdH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1238" y="56"/>
+            <point key="canvasLocation" x="-968" y="556"/>
+        </scene>
+        <!--Map All Table View Controller-->
+        <scene sceneID="ZbY-b8-hVG">
+            <objects>
+                <tableViewController id="zBw-do-G3D" customClass="MapAllTableViewController" customModule="Jome17Wave_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="lEI-8L-FYM">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="619"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="cell" id="Yuc-6n-h56">
+                                <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Yuc-6n-h56" id="gB1-fb-h1f">
+                                    <rect key="frame" x="0.0" y="0.0" width="383" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="zBw-do-G3D" id="c5V-ry-eFD"/>
+                            <outlet property="delegate" destination="zBw-do-G3D" id="hc6-Ag-LCy"/>
+                        </connections>
+                    </tableView>
+                    <connections>
+                        <outlet property="mapTableView" destination="lEI-8L-FYM" id="VWs-aA-UlF"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lbf-fc-TKa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="962" y="-467"/>
         </scene>
         <!--Map Detail Table View Controller-->
         <scene sceneID="eg9-VC-lU4">
@@ -461,7 +504,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="3d8-Ys-iE8">
-                                <rect key="frame" x="0.0" y="88" width="414" height="51"/>
+                                <rect key="frame" x="0.0" y="144" width="414" height="51"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="eV3-EO-7rQ"/>
                                 </constraints>
@@ -477,57 +520,51 @@
                                 </connections>
                             </segmentedControl>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Tfd-62-mkl">
-                                <rect key="frame" x="0.0" y="138" width="414" height="675"/>
+                                <rect key="frame" x="0.0" y="194" width="414" height="619"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vud-Rw-vjl">
-                                        <rect key="frame" x="0.0" y="0.0" width="2070" height="675"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Ay9-9M-JVE">
+                                        <rect key="frame" x="0.0" y="0.0" width="2070" height="619"/>
                                         <subviews>
-                                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dZO-VN-O41">
-                                                <rect key="frame" x="0.0" y="0.0" width="414" height="675"/>
+                                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Thw-9N-ro0">
+                                                <rect key="frame" x="0.0" y="0.0" width="414" height="619"/>
                                                 <connections>
-                                                    <segue destination="v1j-gV-FYb" kind="embed" id="cNm-5J-mCZ"/>
+                                                    <segue destination="zBw-do-G3D" kind="embed" id="iWh-Mq-edv"/>
                                                 </connections>
                                             </containerView>
-                                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PIh-d8-df1">
-                                                <rect key="frame" x="414" y="0.0" width="414" height="675"/>
+                                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SKx-cA-m1d">
+                                                <rect key="frame" x="414" y="0.0" width="414" height="619"/>
                                                 <connections>
-                                                    <segue destination="ydD-76-wuN" kind="embed" id="uOA-aZ-3qf"/>
+                                                    <segue destination="ydD-76-wuN" kind="embed" id="Cye-dy-MTs"/>
                                                 </connections>
                                             </containerView>
-                                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bQ5-xh-j1U">
-                                                <rect key="frame" x="828" y="0.0" width="414" height="675"/>
+                                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y33-wv-Goz">
+                                                <rect key="frame" x="828" y="0.0" width="414" height="619"/>
                                                 <connections>
-                                                    <segue destination="byq-HL-7OS" kind="embed" id="X5v-8l-5n2"/>
+                                                    <segue destination="byq-HL-7OS" kind="embed" id="o8Y-vr-ah7"/>
                                                 </connections>
                                             </containerView>
-                                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ax8-6y-IFs">
-                                                <rect key="frame" x="1242" y="0.0" width="414" height="675"/>
+                                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bQG-Yx-14n">
+                                                <rect key="frame" x="1242" y="0.0" width="414" height="619"/>
                                                 <connections>
-                                                    <segue destination="1d9-gP-Q1F" kind="embed" id="0U3-Ah-V2i"/>
+                                                    <segue destination="1d9-gP-Q1F" kind="embed" id="4Ba-gM-ACK"/>
                                                 </connections>
                                             </containerView>
-                                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="G2I-rO-Lhm">
-                                                <rect key="frame" x="1656" y="0.0" width="414" height="675"/>
+                                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Pd-dH-WcF">
+                                                <rect key="frame" x="1656" y="0.0" width="414" height="619"/>
                                                 <connections>
-                                                    <segue destination="QG7-RA-zh8" kind="embed" id="1vN-vh-LuN"/>
+                                                    <segue destination="QG7-RA-zh8" kind="embed" id="Sml-LN-1iH"/>
                                                 </connections>
                                             </containerView>
                                         </subviews>
-                                        <constraints>
-                                            <constraint firstItem="G2I-rO-Lhm" firstAttribute="leading" secondItem="vud-Rw-vjl" secondAttribute="leading" constant="1656" id="FJQ-bA-CTQ"/>
-                                            <constraint firstAttribute="width" constant="2070" id="Izw-1u-8tZ"/>
-                                            <constraint firstItem="bQ5-xh-j1U" firstAttribute="centerX" secondItem="vud-Rw-vjl" secondAttribute="centerX" id="hwA-lE-g91"/>
-                                            <constraint firstItem="bQ5-xh-j1U" firstAttribute="leading" secondItem="PIh-d8-df1" secondAttribute="leading" constant="414" id="ogc-RQ-oKa"/>
-                                        </constraints>
                                     </stackView>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="dZO-VN-O41" firstAttribute="width" secondItem="w8m-X9-vY0" secondAttribute="width" id="06D-sG-CIK"/>
-                                    <constraint firstItem="vud-Rw-vjl" firstAttribute="top" secondItem="4Cv-S2-V1W" secondAttribute="top" id="JJ5-il-9Kv"/>
-                                    <constraint firstItem="vud-Rw-vjl" firstAttribute="trailing" secondItem="4Cv-S2-V1W" secondAttribute="trailing" id="OiI-Bb-K3M"/>
-                                    <constraint firstItem="vud-Rw-vjl" firstAttribute="leading" secondItem="4Cv-S2-V1W" secondAttribute="leading" id="Qto-Bs-XOY"/>
-                                    <constraint firstItem="vud-Rw-vjl" firstAttribute="height" secondItem="w8m-X9-vY0" secondAttribute="height" id="VOE-2k-Ji0"/>
-                                    <constraint firstItem="vud-Rw-vjl" firstAttribute="bottom" secondItem="4Cv-S2-V1W" secondAttribute="bottom" id="tQW-5Y-qBX"/>
+                                    <constraint firstItem="Ay9-9M-JVE" firstAttribute="height" secondItem="w8m-X9-vY0" secondAttribute="height" id="4FU-ZI-ImE"/>
+                                    <constraint firstItem="Ay9-9M-JVE" firstAttribute="trailing" secondItem="4Cv-S2-V1W" secondAttribute="trailing" id="Sb9-f5-Ww7"/>
+                                    <constraint firstItem="Ay9-9M-JVE" firstAttribute="top" secondItem="4Cv-S2-V1W" secondAttribute="top" id="aEi-YQ-aXM"/>
+                                    <constraint firstItem="Ay9-9M-JVE" firstAttribute="leading" secondItem="4Cv-S2-V1W" secondAttribute="leading" id="iBs-0b-SsQ"/>
+                                    <constraint firstItem="Thw-9N-ro0" firstAttribute="width" secondItem="w8m-X9-vY0" secondAttribute="width" id="vFV-oZ-J0r"/>
+                                    <constraint firstItem="Ay9-9M-JVE" firstAttribute="bottom" secondItem="4Cv-S2-V1W" secondAttribute="bottom" id="xZe-Ba-CAe"/>
                                 </constraints>
                                 <viewLayoutGuide key="contentLayoutGuide" id="4Cv-S2-V1W"/>
                                 <viewLayoutGuide key="frameLayoutGuide" id="w8m-X9-vY0"/>
@@ -535,17 +572,32 @@
                                     <outlet property="delegate" destination="Utn-gb-UMf" id="4ye-3n-WNC"/>
                                 </connections>
                             </scrollView>
+                            <searchBar contentMode="redraw" placeholder="搜尋浪點" showsCancelButton="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BGw-Z8-qiu">
+                                <rect key="frame" x="0.0" y="88" width="414" height="56"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <scopeButtonTitles>
+                                    <string>Title</string>
+                                    <string>Title</string>
+                                </scopeButtonTitles>
+                                <connections>
+                                    <outlet property="delegate" destination="Utn-gb-UMf" id="g3F-Rp-aWV"/>
+                                </connections>
+                            </searchBar>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="3Zg-B8-hwV"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="Tfd-62-mkl" firstAttribute="top" secondItem="3d8-Ys-iE8" secondAttribute="bottom" id="7rD-W9-qul"/>
-                            <constraint firstItem="3d8-Ys-iE8" firstAttribute="top" secondItem="3Zg-B8-hwV" secondAttribute="top" id="Axs-SW-MW7"/>
+                            <constraint firstItem="3d8-Ys-iE8" firstAttribute="top" secondItem="3Zg-B8-hwV" secondAttribute="top" constant="56" id="Axs-SW-MW7"/>
+                            <constraint firstItem="3d8-Ys-iE8" firstAttribute="top" secondItem="BGw-Z8-qiu" secondAttribute="bottom" id="DhC-yV-hNl"/>
                             <constraint firstItem="3d8-Ys-iE8" firstAttribute="leading" secondItem="3Zg-B8-hwV" secondAttribute="leading" id="Erp-Gi-oVa"/>
+                            <constraint firstItem="BGw-Z8-qiu" firstAttribute="leading" secondItem="3Zg-B8-hwV" secondAttribute="leading" id="F14-Pi-d9Y"/>
                             <constraint firstItem="3Zg-B8-hwV" firstAttribute="trailing" secondItem="3d8-Ys-iE8" secondAttribute="trailing" id="Jh1-zs-SKb"/>
-                            <constraint firstItem="3Zg-B8-hwV" firstAttribute="bottom" secondItem="Tfd-62-mkl" secondAttribute="bottom" id="UaZ-ou-YoV"/>
-                            <constraint firstItem="3Zg-B8-hwV" firstAttribute="trailing" secondItem="Tfd-62-mkl" secondAttribute="trailing" id="ctJ-OJ-Pp8"/>
-                            <constraint firstItem="Tfd-62-mkl" firstAttribute="leading" secondItem="3Zg-B8-hwV" secondAttribute="leading" id="def-9p-LZb"/>
+                            <constraint firstItem="Tfd-62-mkl" firstAttribute="bottom" secondItem="3Zg-B8-hwV" secondAttribute="bottom" id="Pfp-Za-eEN"/>
+                            <constraint firstItem="Tfd-62-mkl" firstAttribute="trailing" secondItem="3Zg-B8-hwV" secondAttribute="trailing" id="Sg6-11-Nrm"/>
+                            <constraint firstItem="BGw-Z8-qiu" firstAttribute="trailing" secondItem="3Zg-B8-hwV" secondAttribute="trailing" id="ohn-FY-j8Y"/>
+                            <constraint firstItem="BGw-Z8-qiu" firstAttribute="top" secondItem="3Zg-B8-hwV" secondAttribute="top" id="udc-Dr-u3L"/>
+                            <constraint firstItem="Tfd-62-mkl" firstAttribute="top" secondItem="3d8-Ys-iE8" secondAttribute="bottom" id="xEf-e5-QNf"/>
+                            <constraint firstItem="Tfd-62-mkl" firstAttribute="leading" secondItem="3Zg-B8-hwV" secondAttribute="leading" id="zZf-bz-k8a"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="全台浪點" id="Io6-Za-JOG">
@@ -557,12 +609,13 @@
                     </navigationItem>
                     <connections>
                         <outlet property="scrollView" destination="Tfd-62-mkl" id="o1Q-i3-0o2"/>
+                        <outlet property="searchBar" destination="BGw-Z8-qiu" id="Fqb-GJ-HhW"/>
                         <outlet property="segmentedControl" destination="3d8-Ys-iE8" id="9Y8-ar-cG6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LRk-7P-QgJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-26" y="-696"/>
+            <point key="canvasLocation" x="-28.985507246376812" y="-729.24107142857144"/>
         </scene>
         <!--Map Insert Table View Controller-->
         <scene sceneID="jqH-8v-CLI">
@@ -915,40 +968,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2JL-kK-yAb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="999" y="-1438"/>
-        </scene>
-        <!--全台浪點-->
-        <scene sceneID="TJZ-JL-t7K">
-            <objects>
-                <tableViewController id="v1j-gV-FYb" customClass="MapAllTableViewController" customModule="Jome17Wave_iOS" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="zys-0b-Fg8">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="675"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="cell" id="brT-E7-DV5" customClass="MapListTableViewCell" customModule="Jome17Wave_iOS" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="brT-E7-DV5" id="080-Vo-JsR">
-                                    <rect key="frame" x="0.0" y="0.0" width="383" height="43.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="v1j-gV-FYb" id="2XN-0E-eiK"/>
-                            <outlet property="delegate" destination="v1j-gV-FYb" id="Gs0-sE-0OQ"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" title="全台浪點" id="2Uo-9b-mpV">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="Dax-Jt-p6o"/>
-                    </navigationItem>
-                    <connections>
-                        <outlet property="mapTableView" destination="zys-0b-Fg8" id="buL-Qi-x3w"/>
-                    </connections>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="6EI-0j-CuM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1000" y="-823"/>
         </scene>
         <!--Map Update Table View Controller-->
         <scene sceneID="Qgd-H8-HZI">

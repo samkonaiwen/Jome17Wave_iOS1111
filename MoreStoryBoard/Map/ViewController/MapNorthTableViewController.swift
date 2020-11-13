@@ -9,6 +9,7 @@ import UIKit
 
 class MapNorthTableViewController: UITableViewController {
     
+    @IBOutlet var northTableView: UITableView!
     var northSurf = [Map]()
     let url_server = URL(string: common_url + "SURF_POINTServlet")
     
@@ -20,41 +21,41 @@ class MapNorthTableViewController: UITableViewController {
     func tableViewAddRefreshControl() {
         let refreshControl = UIRefreshControl()
         refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
-        refreshControl.addTarget(self, action: #selector(showNorthSurf), for: .valueChanged)
+        refreshControl.addTarget(self, action: #selector(MapViewController.showAllSurf), for: .valueChanged)
         self.tableView.refreshControl = refreshControl
     }
 
     override func viewWillAppear(_ animated: Bool) {
-        showNorthSurf()
+//        showNorthSurf()
     }
     
-    @objc func showNorthSurf() {
-        let requestParam = ["action" : "getAll"]
-        executeTask(url_server!, requestParam) { (data, response, error) in
-            if error == nil {
-                if data != nil {
-                    if let result = try? JSONDecoder().decode([Map].self, from: data!) {
-                        self.northSurf = result
-                        
-                        self.northSurf = result.filter({ (map) -> Bool in
-                            map.side?.first == "北"
-                        })
-                        
-                        DispatchQueue.main.async {
-                            if let control = self.tableView.refreshControl {
-                                if control.isRefreshing {
-                                    control.endRefreshing()
-                                }
-                            }
-                            self.tableView.reloadData()
-                        }
-                    }
-                }
-            } else {
-                print(error!.localizedDescription)
-            }
-        }
-    }
+//    @objc func showNorthSurf() {
+//        let requestParam = ["action" : "getAll"]
+//        executeTask(url_server!, requestParam) { (data, response, error) in
+//            if error == nil {
+//                if data != nil {
+//                    if let result = try? JSONDecoder().decode([Map].self, from: data!) {
+//                        self.northSurf = result
+//
+//                        self.northSurf = result.filter({ (map) -> Bool in
+//                            map.side?.first == "北"
+//                        })
+//
+//                        DispatchQueue.main.async {
+//                            if let control = self.tableView.refreshControl {
+//                                if control.isRefreshing {
+//                                    control.endRefreshing()
+//                                }
+//                            }
+//                            self.tableView.reloadData()
+//                        }
+//                    }
+//                }
+//            } else {
+//                print(error!.localizedDescription)
+//            }
+//        }
+//    }
 
     
 
