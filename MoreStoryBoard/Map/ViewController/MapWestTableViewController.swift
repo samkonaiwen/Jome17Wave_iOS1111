@@ -8,6 +8,7 @@
 import UIKit
 
 class MapWestTableViewController: UITableViewController {
+    @IBOutlet var westTableView: UITableView!
     
     var westSurf = [Map]()
     let url_server = URL(string: common_url + "SURF_POINTServlet")
@@ -20,40 +21,40 @@ class MapWestTableViewController: UITableViewController {
     func tableViewAddRefreshControl() {
         let refreshControl = UIRefreshControl()
         refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
-        refreshControl.addTarget(self, action: #selector(showWestSurf), for: .valueChanged)
+        refreshControl.addTarget(self, action: #selector(MapViewController.showAllSurf), for: .valueChanged)
         self.tableView.refreshControl = refreshControl
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        showWestSurf()
+//        showWestSurf()
     }
     
-    @objc func showWestSurf() {
-        let requestParam = ["action" : "getAll"]
-        executeTask(url_server!, requestParam) { (data, response, error) in
-            if error == nil {
-                if data != nil {
-                    if let result = try? JSONDecoder().decode([Map].self, from: data!) {
-                        self.westSurf = result
-                        
-                        self.westSurf = result.filter({ (map) -> Bool in
-                            map.side?.first == "西"
-                        })
-                        DispatchQueue.main.async {
-                            if let control = self.tableView.refreshControl {
-                                if control.isRefreshing {
-                                    control.endRefreshing()
-                                }
-                            }
-                            self.tableView.reloadData()
-                        }
-                    }
-                }
-            } else {
-                print(error!.localizedDescription)
-            }
-        }
-    }
+//    @objc func showWestSurf() {
+//        let requestParam = ["action" : "getAll"]
+//        executeTask(url_server!, requestParam) { (data, response, error) in
+//            if error == nil {
+//                if data != nil {
+//                    if let result = try? JSONDecoder().decode([Map].self, from: data!) {
+//                        self.westSurf = result
+//                        
+//                        self.westSurf = result.filter({ (map) -> Bool in
+//                            map.side?.first == "西"
+//                        })
+//                        DispatchQueue.main.async {
+//                            if let control = self.tableView.refreshControl {
+//                                if control.isRefreshing {
+//                                    control.endRefreshing()
+//                                }
+//                            }
+//                            self.tableView.reloadData()
+//                        }
+//                    }
+//                }
+//            } else {
+//                print(error!.localizedDescription)
+//            }
+//        }
+//    }
 
     // MARK: - Table view data source
 

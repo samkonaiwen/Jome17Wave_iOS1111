@@ -17,18 +17,20 @@ class MapAllTableViewController: UITableViewController, UISearchBarDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.register(UINib(nibName: "MapListTableViewCell", bundle: nil), forCellReuseIdentifier: "MapListTableViewCell")
+        mapTableView.reloadData()
     }
     
     func tableViewAddRefreshControl() {
         let refreshControl = UIRefreshControl()
         refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
-        refreshControl.addTarget(self, action: #selector(showAllMaps), for: .valueChanged)
+        refreshControl.addTarget(self, action: #selector(MapViewController.showAllSurf), for: .valueChanged)
         self.tableView.refreshControl = refreshControl
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        showAllMaps()
+//        showAllMaps()
 //        setupSearchBar()
+        
     }
     
     @objc func showAllMaps() {
@@ -40,11 +42,11 @@ class MapAllTableViewController: UITableViewController, UISearchBarDelegate {
                 if data != nil {
                     if let result = try? JSONDecoder().decode([Map].self, from: data!) {
                         self.maps = result
-                        
+
 //                        self.maps = result.filter({ (map) -> Bool in
 //                            map.side?.first == "北"
 //                        })
-                        
+
                         DispatchQueue.main.async {
                             if let control = self.tableView.refreshControl {
                                 if control.isRefreshing {
@@ -100,7 +102,7 @@ class MapAllTableViewController: UITableViewController, UISearchBarDelegate {
         return cell
     }
     
-    override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+    override func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let edit = UIContextualAction(style: .normal, title: "Edit") { (action, view, bool) in
             let mapUpdateVC = self.storyboard?.instantiateViewController(withIdentifier: "MapUpdateTableViewController") as! MapUpdateTableViewController
             let map = self.maps[indexPath.row]
