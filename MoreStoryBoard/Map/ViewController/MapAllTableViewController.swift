@@ -33,35 +33,35 @@ class MapAllTableViewController: UITableViewController, UISearchBarDelegate {
         
     }
     
-    @objc func showAllMaps() {
+//    @objc func showAllMaps() {
 //        var requestParam = [String: Any]()
 //        requestParam ["action"] = "getAll"
-        let requestParam = ["action" : "getAll"]
-        executeTask(url_server!, requestParam) { (data, response, error) in
-            if error == nil {
-                if data != nil {
-                    if let result = try? JSONDecoder().decode([Map].self, from: data!) {
-                        self.maps = result
-
+//        let requestParam = ["action" : "getAll"]
+//        executeTask(url_server!, requestParam) { (data, response, error) in
+//            if error == nil {
+//                if data != nil {
+//                    if let result = try? JSONDecoder().decode([Map].self, from: data!) {
+//                        self.maps = result
+//
 //                        self.maps = result.filter({ (map) -> Bool in
 //                            map.side?.first == "北"
 //                        })
-
-                        DispatchQueue.main.async {
-                            if let control = self.tableView.refreshControl {
-                                if control.isRefreshing {
-                                    control.endRefreshing()
-                                }
-                            }
-                            self.tableView.reloadData()
-                        }
-                    }
-                }
-            } else {
-                print(error!.localizedDescription)
-            }
-        }
-    }
+//
+//                        DispatchQueue.main.async {
+//                            if let control = self.tableView.refreshControl {
+//                                if control.isRefreshing {
+//                                    control.endRefreshing()
+//                                }
+//                            }
+//                            self.tableView.reloadData()
+//                        }
+//                    }
+//                }
+//            } else {
+//                print(error!.localizedDescription)
+//            }
+//        }
+//    }
 
     // MARK: - Table view data source
     

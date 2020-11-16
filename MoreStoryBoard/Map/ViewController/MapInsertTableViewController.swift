@@ -18,6 +18,7 @@ class MapInsertTableViewController: UITableViewController, UIImagePickerControll
     @IBOutlet weak var tfTidal: UITextField!
     @IBOutlet weak var tfDirection: UITextField!
     @IBOutlet weak var ivMap: UIImageView!
+    @IBOutlet weak var fastWord: UIButton!
     
     let url_server = URL(string: common_url + "SURF_POINTServlet")
     var image: UIImage?
@@ -99,6 +100,16 @@ class MapInsertTableViewController: UITableViewController, UIImagePickerControll
         tableView.tableFooterView = UIView(frame: CGRect.zero)
     }
 
+    @IBAction func fastWord(_ sender: Any) {
+        tfName.text = "旗津浪點"
+        tfSide.text = "南部浪點"
+        tfLatitude.text = "22.610201"
+        tfLongitude.text = "120.266923"
+        tfType.text = "沙灘浪型"
+        tfLevel.text = "新手+"
+        tfTidal.text = "滿潮"
+        tfDirection.text = "左右跑"
+    }
 }
 
 extension MapInsertTableViewController {
@@ -112,4 +123,7 @@ extension MapInsertTableViewController {
         tfTidal.resignFirstResponder()
         tfDirection.resignFirstResponder()
     }
+    
+    
+    
 }

@@ -666,6 +666,13 @@
                                                         </stackView>
                                                     </subviews>
                                                 </stackView>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nye-Pp-07E">
+                                                    <rect key="frame" x="344" y="23" width="50" height="150"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <connections>
+                                                        <action selector="fastWord:" destination="9ST-nX-syY" eventType="touchUpInside" id="mxR-SL-KJ5"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="bottom" secondItem="j3Q-A8-k2A" secondAttribute="bottom" id="cPO-ol-NxO"/>
@@ -954,6 +961,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="fastWord" destination="Nye-Pp-07E" id="77B-Rq-TKV"/>
                         <outlet property="ivMap" destination="tNV-JI-7YH" id="ciN-oN-fhL"/>
                         <outlet property="tfDirection" destination="qzD-Jz-wnX" id="UAI-dW-CHq"/>
                         <outlet property="tfLatitude" destination="i5A-Tb-bct" id="1vO-em-FYm"/>
