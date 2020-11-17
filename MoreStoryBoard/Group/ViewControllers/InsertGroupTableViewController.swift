@@ -35,18 +35,18 @@ class InsertGroupTableViewController: UITableViewController {
             datePicker.locale = Locale(identifier: "zh_TW")
         }
         
-        // 增加一個觸控事件
-        let tap = UITapGestureRecognizer(target: self, action:#selector(InsertGroupTableViewController.hideKeyboard(_:)))
-        tap.cancelsTouchesInView = false
-
-        // 加在最基底的 self.view 上
-        self.view.addGestureRecognizer(tap)
+//        // 增加一個觸控事件
+//        let tap = UITapGestureRecognizer(target: self, action:#selector(InsertGroupTableViewController.hideKeyboard(_:)))
+//        tap.cancelsTouchesInView = false
+//
+//        // 加在最基底的 self.view 上
+//        self.view.addGestureRecognizer(tap)
     }
     
-    // 按空白處會隱藏編輯狀態
-    @objc func hideKeyboard(tapG:UITapGestureRecognizer){
-        self.view.endEditing(true)
-    }
+//    // 按空白處會隱藏編輯狀態
+//    @objc func hideKeyboard(tapG:UITapGestureRecognizer){
+//        self.view.endEditing(true)
+//    }
 
     override func viewWillAppear(_ animated: Bool) {
         if let member = member{
