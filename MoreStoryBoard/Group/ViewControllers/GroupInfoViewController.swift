@@ -106,7 +106,6 @@ extension GroupInfoViewController: UIScrollViewDelegate {
 
 extension GroupInfoViewController: UISearchBarDelegate{
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        print("allGroups: \(allGroups)")
         searchKeyword = searchBar.text ?? ""
         // 如果搜尋條件為空字串，就顯示原始資料；否則就顯示搜尋後結果
         if searchKeyword == "" {
@@ -122,6 +121,10 @@ extension GroupInfoViewController: UISearchBarDelegate{
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        view.endEditing(true)
     }
     
 }
