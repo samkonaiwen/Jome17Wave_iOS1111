@@ -81,7 +81,7 @@ extension MemberAdminViewController: UICollectionViewDataSource{
         cell.image = nil
         
         let member = members[indexPath.item]
-        print("indexPath.item: \(indexPath.item)")
+//        print("indexPath.item: \(indexPath.item)")
         cell.memberIdLabel.text = member.memberId
         cell.memberNameLabel.text = member.nickname
         
@@ -115,7 +115,10 @@ extension MemberAdminViewController: UICollectionViewDataSource{
 }
 
 extension MemberAdminViewController: UICollectionViewDelegate{
-//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        <#code#>
-//    }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let memberDetailTableVC = UIStoryboard(name: "Admin", bundle:  nil).instantiateViewController(withIdentifier: "\(MemberDetailTableViewController.self)") as! MemberDetailTableViewController
+        
+        memberDetailTableVC.joMember = members[indexPath.item]
+        self.navigationController?.pushViewController(memberDetailTableVC, animated: true)
+    }
 }

@@ -30,6 +30,7 @@
 		22C77FBF255B971900D0F2D0 /* MapEastTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C77FBE255B971900D0F2D0 /* MapEastTableViewController.swift */; };
 		22C77FC3255BBF2C00D0F2D0 /* MapSouthTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C77FC2255BBF2C00D0F2D0 /* MapSouthTableViewController.swift */; };
 		22C77FC6255BC5D500D0F2D0 /* MapWestTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C77FC5255BC5D500D0F2D0 /* MapWestTableViewController.swift */; };
+		323423BA2562AFBB00CB791D /* MemberDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 323423B92562AFBB00CB791D /* MemberDetailTableViewController.swift */; };
 		32D496912560CDF600E63066 /* MemberAdminCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D496902560CDF600E63066 /* MemberAdminCollectionViewCell.swift */; };
 		32D496962560E53200E63066 /* MemberAdminViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D496952560E53200E63066 /* MemberAdminViewController.swift */; };
 		32D4969925612BFD00E63066 /* JomeMember.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D4969825612BFC00E63066 /* JomeMember.swift */; };
@@ -77,6 +78,7 @@
 		22C77FBE255B971900D0F2D0 /* MapEastTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapEastTableViewController.swift; sourceTree = "<group>"; };
 		22C77FC2255BBF2C00D0F2D0 /* MapSouthTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapSouthTableViewController.swift; sourceTree = "<group>"; };
 		22C77FC5255BC5D500D0F2D0 /* MapWestTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapWestTableViewController.swift; sourceTree = "<group>"; };
+		323423B92562AFBB00CB791D /* MemberDetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberDetailTableViewController.swift; sourceTree = "<group>"; };
 		32D496902560CDF600E63066 /* MemberAdminCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberAdminCollectionViewCell.swift; sourceTree = "<group>"; };
 		32D496952560E53200E63066 /* MemberAdminViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberAdminViewController.swift; sourceTree = "<group>"; };
 		32D4969825612BFC00E63066 /* JomeMember.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JomeMember.swift; sourceTree = "<group>"; };
@@ -220,6 +222,7 @@
 			isa = PBXGroup;
 			children = (
 				32D496952560E53200E63066 /* MemberAdminViewController.swift */,
+				323423B92562AFBB00CB791D /* MemberDetailTableViewController.swift */,
 				32D4969C25619CE600E63066 /* AdminViewController.swift */,
 			);
 			path = "View Controllers";
@@ -387,6 +390,7 @@
 				227D2827254BBFAC00D24B8E /* SceneDelegate.swift in Sources */,
 				224E87072553BB710035CF61 /* MapListTableViewCell.swift in Sources */,
 				893E82C3255E715D00AB61AE /* Member.swift in Sources */,
+				323423BA2562AFBB00CB791D /* MemberDetailTableViewController.swift in Sources */,
 				22C77FC6255BC5D500D0F2D0 /* MapWestTableViewController.swift in Sources */,
 				893E82A9255BEB3300AB61AE /* GroupListTableViewCell.swift in Sources */,
 				220CD9482552B62E00C325F5 /* MapDetailTableViewController.swift in Sources */,
