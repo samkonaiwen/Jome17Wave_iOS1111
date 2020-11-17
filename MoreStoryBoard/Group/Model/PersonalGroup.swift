@@ -7,22 +7,22 @@
 
 import Foundation
 struct PersonalGroup: Codable{
-    let groupId: String
-    let groupName: String
-    let assembleTime: String?
-    let groupEndTime: String?
-    let signUpEnd: String?
-    let groupLimit: Int?
-    let gender: Int?
-    let notice: String?
-    let memberId: String
-    let nickname: String
-    let memberGender: Int?
-    let attenderId: Int?
-    let attenderStatus: Int?
-    let role: Int?
-    let surfName: String?
-    let surfPointId: Int?
-    let joinCountNow: Int?
-    let groupStatus: Int?
+    var groupId: String
+    var groupName: String
+    var assembleTime: String?
+    var groupEndTime: String?
+    var signUpEnd: String?
+    var groupLimit: Int?
+    var gender: Int?
+    var notice: String?
+    var memberId: String
+    var nickname: String
+    var memberGender: Int?
+    var attenderId: Int?
+    var attenderStatus: Int?
+    var role: Int?
+    var surfName: String?
+    var surfPointId: Int?
+    var joinCountNow: Int?
+    var groupStatus: Int?
 }
