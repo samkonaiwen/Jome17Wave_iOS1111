@@ -190,8 +190,8 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Subtitle" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ukF-1t-K9M">
-                                                    <rect key="frame" x="316.5" y="19" width="58.5" height="20.5"/>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="請選擇會員" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ukF-1t-K9M">
+                                                    <rect key="frame" x="288" y="19" width="87" height="20.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -239,15 +239,18 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="58"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Cbb-Cu-4ZU">
+                                                <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="Zz5-2Z-ybF">
                                                     <rect key="frame" x="20" y="11" width="374" height="22"/>
-                                                </pickerView>
+                                                    <connections>
+                                                        <action selector="selectDateDatePicker:" destination="r68-hd-iAR" eventType="valueChanged" id="3cE-lR-7yt"/>
+                                                    </connections>
+                                                </datePicker>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="Cbb-Cu-4ZU" firstAttribute="top" secondItem="eut-89-55y" secondAttribute="topMargin" id="3Xi-KU-UgV"/>
-                                                <constraint firstItem="Cbb-Cu-4ZU" firstAttribute="trailing" secondItem="eut-89-55y" secondAttribute="trailingMargin" id="4ff-me-2eA"/>
-                                                <constraint firstItem="Cbb-Cu-4ZU" firstAttribute="leading" secondItem="eut-89-55y" secondAttribute="leadingMargin" id="GyR-tc-Q0Q"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="Cbb-Cu-4ZU" secondAttribute="bottom" id="UXj-lM-epw"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="Zz5-2Z-ybF" secondAttribute="bottom" id="8Ra-am-eiz"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="Zz5-2Z-ybF" secondAttribute="trailing" id="Dv3-nk-ReA"/>
+                                                <constraint firstItem="Zz5-2Z-ybF" firstAttribute="top" secondItem="eut-89-55y" secondAttribute="topMargin" id="ap7-UY-ILX"/>
+                                                <constraint firstItem="Zz5-2Z-ybF" firstAttribute="leading" secondItem="eut-89-55y" secondAttribute="leadingMargin" id="yXF-GN-enY"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -262,15 +265,20 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UP6-ob-Ovl">
-                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
-                                                </pickerView>
+                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ljd-gf-avO">
+                                                    <rect key="frame" x="20" y="11" width="374" height="22"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                    <connections>
+                                                        <outlet property="delegate" destination="r68-hd-iAR" id="QqG-qx-xcg"/>
+                                                    </connections>
+                                                </textField>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="trailing" secondItem="UP6-ob-Ovl" secondAttribute="trailing" id="KPR-3w-PyN"/>
-                                                <constraint firstItem="UP6-ob-Ovl" firstAttribute="top" secondItem="f2G-ud-dLJ" secondAttribute="top" id="fmn-rF-8N6"/>
-                                                <constraint firstAttribute="bottom" secondItem="UP6-ob-Ovl" secondAttribute="bottom" id="oHz-pn-mLp"/>
-                                                <constraint firstItem="UP6-ob-Ovl" firstAttribute="leading" secondItem="f2G-ud-dLJ" secondAttribute="leading" id="yQ2-gW-ask"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="Ljd-gf-avO" secondAttribute="trailing" id="P37-Ef-67e"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="Ljd-gf-avO" secondAttribute="bottom" id="eFo-jw-3Jv"/>
+                                                <constraint firstItem="Ljd-gf-avO" firstAttribute="leading" secondItem="f2G-ud-dLJ" secondAttribute="leadingMargin" id="mS7-Sg-Nye"/>
+                                                <constraint firstItem="Ljd-gf-avO" firstAttribute="top" secondItem="f2G-ud-dLJ" secondAttribute="topMargin" id="skg-jz-fP0"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -351,9 +359,11 @@
                     </navigationItem>
                     <connections>
                         <outlet property="captainLabel" destination="ukF-1t-K9M" id="d36-UX-jH7"/>
+                        <outlet property="datePicker" destination="Zz5-2Z-ybF" id="83V-bx-X36"/>
                         <outlet property="groupImageView" destination="DQf-6w-zkw" id="mfj-25-FL0"/>
                         <outlet property="groupLimitTextField" destination="4l2-ya-C4P" id="jhh-GV-o3H"/>
                         <outlet property="groupTitleTextField" destination="igP-Xd-TAR" id="eug-PX-bCE"/>
+                        <outlet property="locationTextField" destination="Ljd-gf-avO" id="48L-Ub-pTs"/>
                         <outlet property="memoTextView" destination="JHR-Te-KeQ" id="61F-ij-Oxb"/>
                     </connections>
                 </tableViewController>
@@ -373,7 +383,7 @@
                                 <rect key="frame" x="0.0" y="144" width="414" height="669"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="eKF-FT-gW9" customClass="MemberListTableViewCell" customModule="Jome17Wave_iOS" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="eKF-FT-gW9" customClass="MemberListTableViewCell" customModule="Jome17Wave_iOS" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="eKF-FT-gW9" id="9cs-hi-0wx">
@@ -387,9 +397,12 @@
                                     <outlet property="delegate" destination="HNg-aG-qaG" id="rSM-QM-JvG"/>
                                 </connections>
                             </tableView>
-                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="x9q-kv-Obp">
+                            <searchBar contentMode="redraw" showsCancelButton="YES" translatesAutoresizingMaskIntoConstraints="NO" id="x9q-kv-Obp">
                                 <rect key="frame" x="0.0" y="88" width="414" height="56"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="HNg-aG-qaG" id="Gjf-zb-j1W"/>
+                                </connections>
                             </searchBar>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="76x-iB-dpW"/>
@@ -406,12 +419,15 @@
                     </view>
                     <navigationItem key="navigationItem" id="MwE-lS-SHn"/>
                     <connections>
+                        <outlet property="searchBar" destination="x9q-kv-Obp" id="MVf-sa-olh"/>
                         <outlet property="tableView" destination="U7F-ix-Mem" id="9Ej-Ga-t8q"/>
+                        <segue destination="CKx-2r-3mS" kind="unwind" identifier="back" unwindAction="unwindToInsertGroupView:" id="VBP-Rb-Lyh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eAD-fp-lbO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="CKx-2r-3mS" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2867" y="-55"/>
+            <point key="canvasLocation" x="2941" y="-238"/>
         </scene>
         <!--All Groups View Controller-->
         <scene sceneID="jGZ-Tp-vvB">

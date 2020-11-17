@@ -8,9 +8,14 @@
 import UIKit
 
 class SelectMemberViewController: UIViewController {
-    var members = [Member]()
+    
+    var selectedMember: Member?
+    var allMembers = [Member]()
     let url = URL(string: "\(common_url)jome_member/LoginServlet")
+    var members = [Member]()
+    var searchKeyword = ""
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var searchBar: UISearchBar!
     
     
     override func viewDidLoad() {
@@ -28,6 +33,7 @@ class SelectMemberViewController: UIViewController {
                     let decoder = JSONDecoder()
                     decoder.keyDecodingStrategy = .convertFromSnakeCase //將底線轉換成駝峰是命名
                     if let result = try? decoder.decode([Member].self, from: data!){
+                        self.allMembers = result
                         self.members = result
                         
                         DispatchQueue.main.async {
@@ -40,20 +46,9 @@ class SelectMemberViewController: UIViewController {
             }
         }
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
 
-extension SelectMemberViewController: UITableViewDataSource{
+extension SelectMemberViewController: UITableViewDataSource, UITableViewDelegate{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         members.count
     }
@@ -83,9 +78,42 @@ extension SelectMemberViewController: UITableViewDataSource{
                 print(error!.localizedDescription)
             }
         }
-        
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+           performSegue(withIdentifier: "back", sender: nil)
+       }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let controller = segue.destination as? InsertGroupTableViewController,
+           let row = tableView.indexPathForSelectedRow?.row{
+            controller.member = members[row]
+        }
+    }
+}
+
+extension SelectMemberViewController: UISearchBarDelegate{
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        searchKeyword = searchBar.text ?? ""
+        // 如果搜尋條件為空字串，就顯示原始資料；否則就顯示搜尋後結果
+        if searchKeyword == "" {
+               members = allMembers
+        } else {
+            // 搜尋原始資料內有無包含關鍵字(不區別大小寫)
+            members = allMembers.filter({ (member) -> Bool in
+                member.account.uppercased().contains(searchKeyword.uppercased())
+            })
+            
+        }
+        self.tableView.reloadData()
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        view.endEditing(true)
+    }
 }
