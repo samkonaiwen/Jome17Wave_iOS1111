@@ -27,3 +27,26 @@ struct GroupGetAllResponse: Decodable {
         }
     }
 }
+
+struct changeResponse: Decodable {
+    let resultCode: Int
+}
+
+//struct InsertGroupPost: Encodable {
+//    let action: String
+//    let insertGroup: PersonalGroup
+//    enum CodingKeys: String, CodingKey {
+//               case action
+//               case insertGroup
+//        }
+//    func encode(to encoder: Encoder) throws {
+//           var container = encoder.container(keyedBy: CodingKeys.self)
+//           try container.encode(action, forKey: .action)
+//           let encoder = JSONEncoder()
+//           encoder.keyEncodingStrategy = .convertToSnakeCase
+//           if let insertGroupData = try? encoder.encode(insertGroup),
+//              let insertGroupString = String(data: insertGroupData, encoding: .utf8)  {
+//               try container.encode(insertGroupString, forKey: .insertGroup)
+//           }
+//       }
+//}

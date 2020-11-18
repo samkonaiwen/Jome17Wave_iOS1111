@@ -47,10 +47,13 @@ extension FinishedGroupsViewController: UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: PropertyKeys.finishedGroupsCell, for: indexPath) as! GroupListTableViewCell
+        cell.groupImageView.image = nil
         let group = finishedGroups[indexPath.row]
         cell.nameLabel.text = group.groupName
         cell.locationLabel.text = group.surfName
-        cell.dateLabel.text = group.assembleTime
+        if let date = group.assembleTime{
+            cell.dateLabel.text = dateFormatter(assembleTimeStr: date)
+        }
         
         /* 設定照片 */
         var requestParam = [String: Any]()
@@ -95,5 +98,19 @@ extension FinishedGroupsViewController: UITableViewDataSource{
         }
         
         return cell
+    }
+    
+    func dateFormatter(assembleTimeStr: String) -> String {
+        var dateStr = ""
+        let formatter = DateFormatter()
+        if Locale.current.description.contains("TW") {
+            formatter.locale = Locale(identifier: "zh_TW")
+        }
+        formatter.dateFormat = "yyyy-MM-dd HH:mm"
+        if let assembleTimeDate = formatter.date(from: assembleTimeStr){
+            formatter.dateFormat = "yyyy-MM-dd"
+            dateStr = formatter.string(from: assembleTimeDate)
+        }
+        return dateStr
     }
 }

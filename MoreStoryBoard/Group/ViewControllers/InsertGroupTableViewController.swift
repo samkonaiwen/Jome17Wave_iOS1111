@@ -7,22 +7,29 @@
 
 import UIKit
 
-class InsertGroupTableViewController: UITableViewController {
+class InsertGroupTableViewController: UITableViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     @IBOutlet weak var groupImageView: UIImageView!
     @IBOutlet weak var captainLabel: UILabel!
     @IBOutlet weak var groupTitleTextField: UITextField!
     @IBOutlet weak var groupLimitTextField: UITextField!
     @IBOutlet weak var memoTextView: UITextView!
+    @IBOutlet weak var locationTextField: UITextField!
+    @IBOutlet weak var datePicker: UIDatePicker!
+    
     var member: Member?
     var insertGruop: PersonalGroup?
     var locations = [Map]()
+    var location: Map?
     var selectLocation = ""
-    @IBOutlet weak var locationTextField: UITextField!
-    @IBOutlet weak var datePicker: UIDatePicker!
+    var image: UIImage?
+    var dateString: String?
+    var surfPointId: Int = 0
+    var surfName: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         loadLocations()
+        setPickerView()
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -35,29 +42,33 @@ class InsertGroupTableViewController: UITableViewController {
             datePicker.locale = Locale(identifier: "zh_TW")
         }
         
-//        // 增加一個觸控事件
-//        let tap = UITapGestureRecognizer(target: self, action:#selector(InsertGroupTableViewController.hideKeyboard(_:)))
-//        tap.cancelsTouchesInView = false
-//
-//        // 加在最基底的 self.view 上
-//        self.view.addGestureRecognizer(tap)
     }
     
-//    // 按空白處會隱藏編輯狀態
-//    @objc func hideKeyboard(tapG:UITapGestureRecognizer){
-//        self.view.endEditing(true)
-//    }
 
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         if let member = member{
             captainLabel.text = member.account
-            insertGruop?.memberId = member.memberId
-            insertGruop?.nickname = member.nickname
-            insertGruop?.memberGender = member.gender
+//            insertGruop?.memberId = member.memberId
+//            insertGruop?.nickname = member.nickname
+//            insertGruop?.memberGender = member.gender
         }
     }
     
     @IBAction func unwindToInsertGroupView(_ unwindSegue: UIStoryboardSegue) { }
+    
+    func setPickerView() {
+        let pickerView = UIPickerView()
+        pickerView.dataSource = self
+        pickerView.delegate = self
+        locationTextField.inputView = pickerView
+        let tap = UITapGestureRecognizer(target: self, action: #selector(closedKeybored))
+        view.addGestureRecognizer(tap)
+    }
+    
+    @objc func closedKeybored(){
+        self.view.endEditing(true)
+    }
     
     
     // MARK: - Table view data source
@@ -130,11 +141,16 @@ class InsertGroupTableViewController: UITableViewController {
         let dateFormatter = DateFormatter()
         dateFormatter.locale = datePicker.locale
         print("Locale.current: \(Locale.current)")
-        dateFormatter.dateStyle = .medium
-        dateFormatter.timeStyle = .short
-        let dateString = dateFormatter.string(from: datePicker.date)
-        insertGruop?.assembleTime = dateString
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm"
+//        dateFormatter.dateStyle = .medium
+//        dateFormatter.timeStyle = .short
+        dateString = dateFormatter.string(from: datePicker.date)
+        
+        
     }
+    
+    /* 點擊虛擬鍵盤上return鍵會隱藏虛擬鍵盤 */
+    @IBAction func pressedKeyboardReturn(_ sender: Any) { }
     
     func loadLocations() {
         let url = URL(string: "\(common_url)SURF_POINTServlet")
@@ -145,59 +161,119 @@ class InsertGroupTableViewController: UITableViewController {
                     self.locations = result
                 
                     DispatchQueue.main.async {
-                        //pickerView重整？
+                        self.locationTextField.reloadInputViews()
                     }
             }
         }
     }
-}
-
-extension InsertGroupTableViewController: UITextFieldDelegate{
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        DispatchQueue.main.async {
-            self.setPickerView()
-        }
-        
-        
+    
+    /*照片按鈕*/
+    @IBAction func pressedTakeAPicture(_ sender: Any) {
+        imagePicker(type: .camera)
     }
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
-        return true
+    @IBAction func pressedPickAPicture(_ sender: Any) {
+        imagePicker(type: .photoLibrary)
+    }
+    /*照片處理*/
+    func imagePicker(type: UIImagePickerController.SourceType) {
+//        hideKeyboard()
+        let imagePickerController = UIImagePickerController()
+        imagePickerController.sourceType = type
+        imagePickerController.delegate = self
+        present(imagePickerController, animated: true, completion: nil)
     }
     
-    func setPickerView() {
-        let pickerView = UIPickerView()
-        pickerView.dataSource = self
-        pickerView.delegate = self
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+            self.image = image
+            groupImageView.image = image
+        }
+        dismiss(animated: true, completion: nil)
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func fastWord(_ sender: Any) {
+        groupTitleTextField.text = "衝浪衝浪吧"
+        groupLimitTextField.text = "4"
+        memoTextView.text = "歡迎一起來玩"
+    }
+    
+    /*完成按鈕*/
+    @IBAction func pressedDone(_ sender: Any) {
         
-//        //初始化pickerView上方的toolBar
-//        let toolBar = UIToolbar()
-//        toolBar.barStyle = UIBarStyle.default
-//        toolBar.isTranslucent = true
-//        toolBar.tintColor = .systemBlue
-//        toolBar.sizeToFit()
-//        //加入toolbar的按鈕跟中間的空白
-//        let doneButton = UIBarButtonItem(title: "確認", style: .plain, target: self, action: #selector(submit))
-//        //將doneButton設定跟pickerView一樣的tag，submit方法裡可以比對要顯示哪個textField的text
-//        doneButton.tag = pickerView.tag
-//        let spaceButton = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
-//        let cancelButton = UIBarButtonItem(title: "取消", style: .plain, target: self, action: #selector(cancel))
-//        toolBar.setItems([cancelButton, spaceButton, doneButton], animated: false)
-//        //設定toolBar可以使用
-//        toolBar.isUserInteractionEnabled = true
-//
-//        //初始化textField，要先加入subView，才能設定他的inputView跟inputAccessoryView
-//        locationTextField = UITextField(frame: CGRect.zero)
-//        view.addSubview(locationTextField)
-        locationTextField.inputView = pickerView
-//        locationTextField.inputAccessoryView = toolBar
-        //彈出pickerField
-        locationTextField.becomeFirstResponder()
+        if member == nil || groupTitleTextField.text == "" || dateString == "" || location == nil || groupLimitTextField.text == "" || memoTextView.text == ""{
+            showAlert(word: "您尚有資料未選擇")
+        }else{
+            
+            let title: String = groupTitleTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+//            let now = Date()
+            let formatter = DateFormatter()
+//            let assembleTimeFormatter = DateFormatter()
+            if Locale.current.description.contains("TW") {
+                formatter.locale = Locale(identifier: "zh_TW")
+//                assembleTimeFormatter.locale = Locale(identifier: "zh_TW")
+            }
+            formatter.dateFormat = "yyyyMMddHHmmssss"
+//            assembleTimeFormatter.dateFormat = "yyyy-MM-dd HH:mm"
+            let groupId = formatter.string(from: Date())
+            let groupName = title
+            let assembleTime = dateString
+            let surfPointId = self.surfPointId
+            let surfName = self.surfName
+            let groupLimit = Int(groupLimitTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines))
+            let gender = member?.gender
+            let notice = memoTextView.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+            let attenderStatus = 1
+            let role = 1
+            let memberId = member?.memberId
+            let nickname = member?.nickname
+            var newGroup = PersonalGroup(groupId: groupId, groupName: groupName, assembleTime: assembleTime, groupEndTime: nil, signUpEnd: nil, groupLimit: groupLimit, gender: nil, notice: notice, memberId: memberId!, nickname: nickname!, memberGender: gender, attenderId: nil, attenderStatus: attenderStatus, role: role, surfName: surfName, surfPointId: surfPointId, joinCountNow: nil, groupStatus: 1)
+            insertGroup(newGroup: newGroup)
+        }
+        
+    }
+    
+    //showAlert
+    func showAlert(word: String) {
+        let alertController = UIAlertController(title: word, message: "記得在檢查一下唷！", preferredStyle: UIAlertController.Style.alert)
+        let okAction = UIAlertAction(title: "好", style: UIAlertAction.Style.default)
+        alertController.addAction(okAction)
+        self.present(alertController, animated: true, completion: nil)
+        
+    }
+    
+    //新增活動
+    func insertGroup(newGroup: PersonalGroup?) {
+        let url = URL(string: "\(common_url)jome_member/GroupOperateServlet")
+        var requestParam = [String: Any]()
+        requestParam["action"] = "creatAGroupForIOS"
+        requestParam["insertGroup"] = try! String(data: JSONEncoder().encode(newGroup), encoding: .utf8)
+        
+        if self.image != nil {
+            requestParam["imageBase64"] = self.image!.jpegData(compressionQuality: 1.0)!.base64EncodedString()
+        }
+        executeTask(url!, requestParam) { (data, response, error) in
+            
+            if let data = data,
+               let result = try? JSONDecoder().decode(changeResponse.self, from: data){
+                let resultCode = result.resultCode
+                DispatchQueue.main.async {
+                    if resultCode > 0{
+                        self.navigationController?.popViewController(animated: true)
+                    }else{
+                        self.showAlert(word: "新增失敗")
+                    }
+                }
+            }
+            
+        }
     }
 }
 
 extension InsertGroupTableViewController: UIPickerViewDelegate, UIPickerViewDataSource{
-    
     // UIPickerViewDataSource
     /* 希望picker view一次顯示幾個欄位的選項 */
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -215,14 +291,9 @@ extension InsertGroupTableViewController: UIPickerViewDelegate, UIPickerViewData
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-//        setColor(row: row)
-        let location = locations[row]
-        insertGruop?.surfName = location.name
-        insertGruop?.surfPointId = row + 1
-        locationTextField.text = location.name
-        
+        location = locations[row]
+        surfName = location?.name
+        surfPointId = row + 1
+        locationTextField.text = location?.name
     }
-    
-    
 }
-

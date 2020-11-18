@@ -25,16 +25,24 @@ class GroupInfoViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        
+        fetchAllGroups()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        fetchAllGroups()
+        
+        
+        /* 點擊畫面任一處來關閉鍵盤 */
+        let tap = UITapGestureRecognizer(target: self, action: #selector(closedKeybored))
+        view.addGestureRecognizer(tap)
+    }
+    
+    @objc func closedKeybored(){
+        self.view.endEditing(true)
     }
     
     /* 讀取所有活動 */
-    func fetchAllGroups() {
+    @objc func fetchAllGroups() {
         let requestParam = ["action":"getAll"]
         executeTask(url!, requestParam) { (data, response, error) in
             if error == nil{

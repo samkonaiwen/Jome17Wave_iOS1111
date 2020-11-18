@@ -11,7 +11,6 @@ class AllGroupsViewController: UIViewController {
   
     
     @IBOutlet weak var tableView: UITableView!
-    var refreshControl = UIRefreshControl()
     var allGroups = [PersonalGroup]()
     let url = URL(string: "\(common_url)jome_member/GroupOperateServlet")
     var groupInfoViewController: GroupInfoViewController?
@@ -32,10 +31,16 @@ class AllGroupsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.register(UINib(nibName: "GroupListTableViewCell", bundle: nil), forCellReuseIdentifier: "GroupListTableViewCell")
-        tableView.addSubview(refreshControl)
+//        tableView.addSubview(refreshControl)
         // Do any additional setup after loading the view.
     }
     
+    func tableViewAddRefreshControl() {
+        let refreshControl = UIRefreshControl()
+        refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
+        refreshControl.addTarget(self, action: #selector(GroupInfoViewController.fetchAllGroups), for: .valueChanged)
+        self.tableView.refreshControl = refreshControl
+    }
     /*
     // MARK: - Navigation
 
@@ -56,11 +61,14 @@ extension AllGroupsViewController: UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: PropertyKeys.allGroupsCell, for: indexPath) as! GroupListTableViewCell
+        cell.groupImageView.image = nil
+        cell.dateLabel.text = ""
         let group = allGroups[indexPath.row]
         cell.nameLabel.text = group.groupName
         cell.locationLabel.text = group.surfName
-        cell.dateLabel.text = group.assembleTime
-        
+        if let date = group.assembleTime{
+            cell.dateLabel.text = dateFormatter(assembleTimeStr: date)
+        }
         /* 設定照片 */
         var requestParam = [String: Any]()
         requestParam["action"] = "getImage"
@@ -104,5 +112,19 @@ extension AllGroupsViewController: UITableViewDataSource{
         }
         
         return cell
+    }
+    
+    func dateFormatter(assembleTimeStr: String) -> String {
+        var dateStr = ""
+        let formatter = DateFormatter()
+        if Locale.current.description.contains("TW") {
+            formatter.locale = Locale(identifier: "zh_TW")
+        }
+        formatter.dateFormat = "yyyy-MM-dd HH:mm"
+        if let assembleTimeDate = formatter.date(from: assembleTimeStr){
+            formatter.dateFormat = "yyyy-MM-dd"
+            dateStr = formatter.string(from: assembleTimeDate)
+        }
+        return dateStr
     }
 }
