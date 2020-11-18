@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct JomeMember: Decodable {
+struct JomeMember: Codable {
     let memberId: String!
     let accountStatus: Int?
     let phoneNumber: String?
@@ -23,6 +23,7 @@ struct JomeMember: Decodable {
     let beRankedCount: String?
     let groupCount: String?
     let createGroupCount: String?   //15
+    let modifyDate: String?
     
     enum CodingKeys: String, CodingKey {
         case memberId
@@ -40,6 +41,7 @@ struct JomeMember: Decodable {
         case beRankedCount
         case groupCount
         case createGroupCount   //15
+        case modifyDate
     }
 }
 

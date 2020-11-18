@@ -14,6 +14,7 @@ class MemberAdminViewController: UIViewController {
     let url = URL(string: "\(common_url)jome_member/LoginServlet")
     var allMembers = [JomeMember]()
     var members = [JomeMember]()
+
     
     
     override func viewDidLoad() {
@@ -22,6 +23,7 @@ class MemberAdminViewController: UIViewController {
         memberCollectionView.dataSource = self
         searchBar.delegate = self
         getJoMembers()
+        self.memberCollectionView.reloadData()
     }
     
     
@@ -77,6 +79,7 @@ extension MemberAdminViewController: UICollectionViewDataSource{
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = memberCollectionView.dequeueReusableCell(withReuseIdentifier: "\(MemberAdminCollectionViewCell.self)", for: indexPath) as! MemberAdminCollectionViewCell
+        cell.backgroundColor = #colorLiteral(red: 0.9607843161, green: 0.7058823705, blue: 0.200000003, alpha: 1)
         
         cell.image = nil
         
@@ -119,6 +122,7 @@ extension MemberAdminViewController: UICollectionViewDelegate{
         let memberDetailTableVC = UIStoryboard(name: "Admin", bundle:  nil).instantiateViewController(withIdentifier: "\(MemberDetailTableViewController.self)") as! MemberDetailTableViewController
         
         memberDetailTableVC.joMember = members[indexPath.item]
+        memberDetailTableVC.url = self.url
         self.navigationController?.pushViewController(memberDetailTableVC, animated: true)
     }
 }
