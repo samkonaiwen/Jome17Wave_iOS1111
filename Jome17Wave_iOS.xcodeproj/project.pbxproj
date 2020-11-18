@@ -20,6 +20,7 @@
 		224E87082553BB710035CF61 /* MapListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 224E87062553BB710035CF61 /* MapListTableViewCell.xib */; };
 		224E870C2553E3AC0035CF61 /* MapNorthTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224E870B2553E3AC0035CF61 /* MapNorthTableViewController.swift */; };
 		224E87142554042D0035CF61 /* MapInsertTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224E87132554042D0035CF61 /* MapInsertTableViewController.swift */; };
+		226079DB2564C850002627FD /* SurfAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226079DA2564C850002627FD /* SurfAnnotation.swift */; };
 		227D2825254BBFAC00D24B8E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227D2824254BBFAC00D24B8E /* AppDelegate.swift */; };
 		227D2827254BBFAC00D24B8E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227D2826254BBFAC00D24B8E /* SceneDelegate.swift */; };
 		227D2829254BBFAC00D24B8E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227D2828254BBFAC00D24B8E /* ViewController.swift */; };
@@ -30,6 +31,7 @@
 		22C77FBF255B971900D0F2D0 /* MapEastTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C77FBE255B971900D0F2D0 /* MapEastTableViewController.swift */; };
 		22C77FC3255BBF2C00D0F2D0 /* MapSouthTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C77FC2255BBF2C00D0F2D0 /* MapSouthTableViewController.swift */; };
 		22C77FC6255BC5D500D0F2D0 /* MapWestTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C77FC5255BC5D500D0F2D0 /* MapWestTableViewController.swift */; };
+		22CE45892563D944000D1CD1 /* SurfMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22CE45882563D944000D1CD1 /* SurfMapViewController.swift */; };
 		323423BA2562AFBB00CB791D /* MemberDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 323423B92562AFBB00CB791D /* MemberDetailTableViewController.swift */; };
 		32D496912560CDF600E63066 /* MemberAdminCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D496902560CDF600E63066 /* MemberAdminCollectionViewCell.swift */; };
 		32D496962560E53200E63066 /* MemberAdminViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D496952560E53200E63066 /* MemberAdminViewController.swift */; };
@@ -66,6 +68,7 @@
 		224E87062553BB710035CF61 /* MapListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MapListTableViewCell.xib; sourceTree = "<group>"; };
 		224E870B2553E3AC0035CF61 /* MapNorthTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapNorthTableViewController.swift; sourceTree = "<group>"; };
 		224E87132554042D0035CF61 /* MapInsertTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapInsertTableViewController.swift; sourceTree = "<group>"; };
+		226079DA2564C850002627FD /* SurfAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurfAnnotation.swift; sourceTree = "<group>"; };
 		227D2821254BBFAC00D24B8E /* Jome17Wave_iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Jome17Wave_iOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		227D2824254BBFAC00D24B8E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		227D2826254BBFAC00D24B8E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -78,6 +81,7 @@
 		22C77FBE255B971900D0F2D0 /* MapEastTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapEastTableViewController.swift; sourceTree = "<group>"; };
 		22C77FC2255BBF2C00D0F2D0 /* MapSouthTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapSouthTableViewController.swift; sourceTree = "<group>"; };
 		22C77FC5255BC5D500D0F2D0 /* MapWestTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapWestTableViewController.swift; sourceTree = "<group>"; };
+		22CE45882563D944000D1CD1 /* SurfMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurfMapViewController.swift; sourceTree = "<group>"; };
 		323423B92562AFBB00CB791D /* MemberDetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberDetailTableViewController.swift; sourceTree = "<group>"; };
 		32D496902560CDF600E63066 /* MemberAdminCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberAdminCollectionViewCell.swift; sourceTree = "<group>"; };
 		32D496952560E53200E63066 /* MemberAdminViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberAdminViewController.swift; sourceTree = "<group>"; };
@@ -145,6 +149,7 @@
 				22C77FBE255B971900D0F2D0 /* MapEastTableViewController.swift */,
 				22C77FC2255BBF2C00D0F2D0 /* MapSouthTableViewController.swift */,
 				22C77FC5255BC5D500D0F2D0 /* MapWestTableViewController.swift */,
+				22CE45882563D944000D1CD1 /* SurfMapViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -170,6 +175,7 @@
 			isa = PBXGroup;
 			children = (
 				2208B7172551869400D4A9C1 /* Map.swift */,
+				226079DA2564C850002627FD /* SurfAnnotation.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -390,6 +396,7 @@
 				227D2827254BBFAC00D24B8E /* SceneDelegate.swift in Sources */,
 				224E87072553BB710035CF61 /* MapListTableViewCell.swift in Sources */,
 				893E82C3255E715D00AB61AE /* Member.swift in Sources */,
+				226079DB2564C850002627FD /* SurfAnnotation.swift in Sources */,
 				323423BA2562AFBB00CB791D /* MemberDetailTableViewController.swift in Sources */,
 				22C77FC6255BC5D500D0F2D0 /* MapWestTableViewController.swift in Sources */,
 				893E82A9255BEB3300AB61AE /* GroupListTableViewCell.swift in Sources */,
@@ -400,6 +407,7 @@
 				893E8296255BE91D00AB61AE /* PersonalGroup.swift in Sources */,
 				893E82AD255D1C9D00AB61AE /* GroupInfoViewController.swift in Sources */,
 				893E82A2255BEA1000AB61AE /* GroupCenterViewController.swift in Sources */,
+				22CE45892563D944000D1CD1 /* SurfMapViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

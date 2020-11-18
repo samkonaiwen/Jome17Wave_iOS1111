@@ -1,6 +1,16 @@
 {
   "colors" : [
     {
+      "color" : {
+        "color-space" : "srgb",
+        "components" : {
+          "alpha" : "1.000",
+          "blue" : "0.388",
+          "green" : "0.263",
+          "red" : "0.020"
+        }
+      },
+      "filename" : "BG.png",
       "idiom" : "universal"
     }
   ],

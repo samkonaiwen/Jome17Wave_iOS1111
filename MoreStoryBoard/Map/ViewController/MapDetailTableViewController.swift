@@ -35,6 +35,7 @@ class MapDetailTableViewController: UITableViewController {
         lbDirection.text = map.direction
         
         showImage()
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(clickSetting))
         tableView.tableFooterView = UIView(frame: CGRect.zero)
     }
     
@@ -65,6 +66,66 @@ class MapDetailTableViewController: UITableViewController {
             }
         }
     }
+    
+    @objc func clickSetting() {
+        let controller = UIAlertController(title: "浪點設定", message: "請選擇", preferredStyle: .actionSheet)
+        
+        let settingAction = UIAlertAction(title: "編輯浪點", style: .default) { (_) in
+            self.settingEdit()
+        }
+        controller.addAction(settingAction)
+        
+        let deleteAction = UIAlertAction(title: "刪除浪點", style: .destructive) { (_) in
+            self.settingDelete()
+        }
+        controller.addAction(deleteAction)
+        
+        let cancelAction = UIAlertAction(title: "取消", style: .cancel, handler: nil)
+        controller.addAction(cancelAction)
+        
+        present(controller, animated: true, completion: nil)
+    }
+    
+    
+    
+    func settingEdit() {
+        let toUpdate = UIStoryboard(name: "Map", bundle: nil).instantiateViewController(withIdentifier: "MapUpdateTableViewController") as! MapUpdateTableViewController
+        toUpdate.map = map
+        self.navigationController?.pushViewController(toUpdate, animated: true)
+    }
+    
+    func settingDelete() {
+        let controller = UIAlertController(title: "警告", message: "確定要刪除此浪點", preferredStyle: .alert)
+        
+        let okAction = UIAlertAction(title: "確定", style: .destructive) { (_) in
+            var requestParam = [String: Any]()
+            requestParam["action"] = "mapDelete"
+            requestParam["mapId"] = self.map.id
+            executeTask(self.url_server!, requestParam) { (data, response, error) in
+                if error == nil {
+                    if data != nil {
+                        if let result = String(data: data!, encoding: .utf8) {
+                            if let count = Int(result) {
+                                if count != 0 {
+                                    DispatchQueue.main.async {
+                                        self.navigationController?.popViewController(animated: true)
+                                    }
+                                }
+                            }
+                        }
+                    }
+                } else {
+                    print(error!.localizedDescription)
+                }
+            }
+        }
+        controller.addAction(okAction)
+        let noAction = UIAlertAction(title: "不要刪除", style: .default, handler: nil)
+        controller.addAction(noAction)
+        present(controller, animated: true)
+        }
+    
+    
 
     // MARK: - Table view data source
 

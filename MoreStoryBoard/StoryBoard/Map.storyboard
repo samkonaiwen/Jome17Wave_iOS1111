@@ -8,6 +8,38 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Surf Map View Controller-->
+        <scene sceneID="69d-PI-aSZ">
+            <objects>
+                <viewController id="9FP-N5-Cin" customClass="SurfMapViewController" customModule="Jome17Wave_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="578-cU-3Uh">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="619"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="n3o-fT-A3B">
+                                <rect key="frame" x="0.0" y="44" width="414" height="575"/>
+                                <connections>
+                                    <outlet property="delegate" destination="9FP-N5-Cin" id="5e0-lN-XBV"/>
+                                </connections>
+                            </mapView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="cZV-kk-MZp"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="n3o-fT-A3B" firstAttribute="top" secondItem="cZV-kk-MZp" secondAttribute="top" id="Cqq-PJ-JWw"/>
+                            <constraint firstItem="n3o-fT-A3B" firstAttribute="leading" secondItem="cZV-kk-MZp" secondAttribute="leading" id="LVY-Fj-RnS"/>
+                            <constraint firstItem="cZV-kk-MZp" firstAttribute="trailing" secondItem="n3o-fT-A3B" secondAttribute="trailing" id="vvZ-Pb-yBh"/>
+                            <constraint firstItem="cZV-kk-MZp" firstAttribute="bottom" secondItem="n3o-fT-A3B" secondAttribute="bottom" id="xGz-wf-LhK"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="mapView" destination="n3o-fT-A3B" id="KAL-iS-NHG"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qer-7j-sGf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2333" y="557"/>
+        </scene>
         <!--地圖-->
         <scene sceneID="tfc-SR-yp1">
             <objects>
@@ -155,7 +187,7 @@
         <!--Map All Table View Controller-->
         <scene sceneID="ZbY-b8-hVG">
             <objects>
-                <tableViewController id="zBw-do-G3D" customClass="MapAllTableViewController" customModule="Jome17Wave_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="MapAllTableViewController" id="zBw-do-G3D" customClass="MapAllTableViewController" customModule="Jome17Wave_iOS" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="lEI-8L-FYM">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="619"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -498,7 +530,7 @@
         <!--全台浪點-->
         <scene sceneID="9Cm-UU-7VG">
             <objects>
-                <viewController id="Utn-gb-UMf" customClass="MapViewController" customModule="Jome17Wave_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MapViewController" id="Utn-gb-UMf" customClass="MapViewController" customModule="Jome17Wave_iOS" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="wLq-zQ-ffr">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -514,6 +546,7 @@
                                     <segment title="東部"/>
                                     <segment title="南部"/>
                                     <segment title="西部"/>
+                                    <segment title="地圖"/>
                                 </segments>
                                 <connections>
                                     <action selector="changePage:" destination="Utn-gb-UMf" eventType="valueChanged" id="9af-oa-XgN"/>
@@ -523,7 +556,7 @@
                                 <rect key="frame" x="0.0" y="194" width="414" height="619"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Ay9-9M-JVE">
-                                        <rect key="frame" x="0.0" y="0.0" width="2070" height="619"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="2484" height="619"/>
                                         <subviews>
                                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Thw-9N-ro0">
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="619"/>
@@ -553,6 +586,12 @@
                                                 <rect key="frame" x="1656" y="0.0" width="414" height="619"/>
                                                 <connections>
                                                     <segue destination="QG7-RA-zh8" kind="embed" id="Sml-LN-1iH"/>
+                                                </connections>
+                                            </containerView>
+                                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="L9U-I4-yEP">
+                                                <rect key="frame" x="2070" y="0.0" width="414" height="619"/>
+                                                <connections>
+                                                    <segue destination="9FP-N5-Cin" kind="embed" id="i5P-EM-N3u"/>
                                                 </connections>
                                             </containerView>
                                         </subviews>
@@ -638,12 +677,17 @@
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="j3Q-A8-k2A">
                                                     <rect key="frame" x="57" y="10" width="300" height="187"/>
                                                     <subviews>
-                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="photo" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="tNV-JI-7YH">
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="photo" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="tNV-JI-7YH">
                                                             <rect key="frame" x="0.0" y="1" width="300" height="147.5"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="150" id="Yn4-bw-ZIe"/>
                                                                 <constraint firstAttribute="width" constant="300" id="dT0-Pv-0uK"/>
                                                             </constraints>
+                                                            <userDefinedRuntimeAttributes>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                                    <integer key="value" value="10"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                            </userDefinedRuntimeAttributes>
                                                         </imageView>
                                                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="1sI-Fc-9Ql">
                                                             <rect key="frame" x="0.0" y="150" width="300" height="37"/>
@@ -1031,6 +1075,13 @@
                                                         </stackView>
                                                     </subviews>
                                                 </stackView>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CTb-cS-owF">
+                                                    <rect key="frame" x="344" y="23" width="50" height="150"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <connections>
+                                                        <action selector="fastWord:" destination="1rM-kh-ZcG" eventType="touchUpInside" id="Cl0-Eb-Hba"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="HqQ-kJ-5ZO" firstAttribute="centerX" secondItem="tE9-qK-iOe" secondAttribute="centerX" id="Tja-uy-viE"/>
@@ -1314,6 +1365,7 @@
                     <toolbarItems/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="fastWord" destination="CTb-cS-owF" id="YYW-YU-O9m"/>
                         <outlet property="ivMap" destination="x06-fX-oI1" id="MeC-wW-kzF"/>
                         <outlet property="tfDirection" destination="4nf-Ks-IxM" id="lhc-cf-HTQ"/>
                         <outlet property="tfLatitude" destination="KLg-pi-y8b" id="qEb-vJ-9cc"/>

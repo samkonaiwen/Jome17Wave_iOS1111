@@ -17,6 +17,9 @@ class MapUpdateTableViewController: UITableViewController, UIImagePickerControll
     @IBOutlet weak var tfTidal: UITextField!
     @IBOutlet weak var tfDirection: UITextField!
     @IBOutlet weak var ivMap: UIImageView!
+    @IBOutlet weak var fastWord: UIButton!
+    
+    
     let url_server = URL(string: common_url + "SURF_POINTServlet")
     var map: Map!
     var imageUpload: UIImage?
@@ -112,7 +115,8 @@ class MapUpdateTableViewController: UITableViewController, UIImagePickerControll
                         if let count = Int(result) {
                             DispatchQueue.main.async {
                                 if count != 0 {
-                                    self.navigationController?.popViewController(animated: true)
+                                    let mapController = self.storyboard?.instantiateViewController(withIdentifier: "\(MapViewController.self)") as! MapViewController
+                                    self.navigationController?.pushViewController(mapController, animated: true)
                                 }
                             }
                         }
@@ -126,6 +130,17 @@ class MapUpdateTableViewController: UITableViewController, UIImagePickerControll
     
     
     @IBAction func didEndOnExit(_ sender: Any) {
+    }
+    
+    @IBAction func fastWord(_ sender: Any) {
+        tfName.text = "宜灣浪點"
+        tfSide.text = "東部浪點"
+        tfLatitude.text = "23.207000"
+        tfLongitude.text = "121.396669"
+        tfType.text = "定點起浪"
+        tfLevel.text = "進階 +"
+        tfTidal.text = "中潮"
+        tfDirection.text = "左跑"
     }
     
 }
