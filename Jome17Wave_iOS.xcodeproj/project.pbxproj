@@ -39,7 +39,6 @@
 		893E8299255BE9BA00AB61AE /* AllGroupsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 893E8298255BE9BA00AB61AE /* AllGroupsViewController.swift */; };
 		893E829C255BE9DA00AB61AE /* ComingGroupsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 893E829B255BE9DA00AB61AE /* ComingGroupsViewController.swift */; };
 		893E829F255BE9ED00AB61AE /* FinishedGroupsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 893E829E255BE9ED00AB61AE /* FinishedGroupsViewController.swift */; };
-		893E82A2255BEA1000AB61AE /* GroupCenterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 893E82A1255BEA1000AB61AE /* GroupCenterViewController.swift */; };
 		893E82A5255BEA2900AB61AE /* LastGroupsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 893E82A4255BEA2900AB61AE /* LastGroupsViewController.swift */; };
 		893E82A9255BEB3300AB61AE /* GroupListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 893E82A7255BEB3300AB61AE /* GroupListTableViewCell.swift */; };
 		893E82AA255BEB3300AB61AE /* GroupListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 893E82A8255BEB3300AB61AE /* GroupListTableViewCell.xib */; };
@@ -50,6 +49,7 @@
 		893E82BF255E6ED400AB61AE /* MemberListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 893E82BD255E6ED400AB61AE /* MemberListTableViewCell.swift */; };
 		893E82C0255E6ED400AB61AE /* MemberListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 893E82BE255E6ED400AB61AE /* MemberListTableViewCell.xib */; };
 		893E82C3255E715D00AB61AE /* Member.swift in Sources */ = {isa = PBXBuildFile; fileRef = 893E82C2255E715D00AB61AE /* Member.swift */; };
+		894595C125650CF6001B97E6 /* GroupDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894595C025650CF6001B97E6 /* GroupDetailTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -87,7 +87,6 @@
 		893E8298255BE9BA00AB61AE /* AllGroupsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllGroupsViewController.swift; sourceTree = "<group>"; };
 		893E829B255BE9DA00AB61AE /* ComingGroupsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComingGroupsViewController.swift; sourceTree = "<group>"; };
 		893E829E255BE9ED00AB61AE /* FinishedGroupsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinishedGroupsViewController.swift; sourceTree = "<group>"; };
-		893E82A1255BEA1000AB61AE /* GroupCenterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupCenterViewController.swift; sourceTree = "<group>"; };
 		893E82A4255BEA2900AB61AE /* LastGroupsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LastGroupsViewController.swift; sourceTree = "<group>"; };
 		893E82A7255BEB3300AB61AE /* GroupListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupListTableViewCell.swift; sourceTree = "<group>"; };
 		893E82A8255BEB3300AB61AE /* GroupListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GroupListTableViewCell.xib; sourceTree = "<group>"; };
@@ -98,6 +97,7 @@
 		893E82BD255E6ED400AB61AE /* MemberListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberListTableViewCell.swift; sourceTree = "<group>"; };
 		893E82BE255E6ED400AB61AE /* MemberListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MemberListTableViewCell.xib; sourceTree = "<group>"; };
 		893E82C2255E715D00AB61AE /* Member.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Member.swift; sourceTree = "<group>"; };
+		894595C025650CF6001B97E6 /* GroupDetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupDetailTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -271,11 +271,11 @@
 				893E8298255BE9BA00AB61AE /* AllGroupsViewController.swift */,
 				893E829B255BE9DA00AB61AE /* ComingGroupsViewController.swift */,
 				893E829E255BE9ED00AB61AE /* FinishedGroupsViewController.swift */,
-				893E82A1255BEA1000AB61AE /* GroupCenterViewController.swift */,
 				893E82A4255BEA2900AB61AE /* LastGroupsViewController.swift */,
 				893E82AC255D1C9D00AB61AE /* GroupInfoViewController.swift */,
 				893E82B7255E6DDD00AB61AE /* InsertGroupTableViewController.swift */,
 				893E82BA255E6E2900AB61AE /* SelectMemberViewController.swift */,
+				894595C025650CF6001B97E6 /* GroupDetailTableViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -379,6 +379,7 @@
 				227D2825254BBFAC00D24B8E /* AppDelegate.swift in Sources */,
 				893E829F255BE9ED00AB61AE /* FinishedGroupsViewController.swift in Sources */,
 				22C77FC3255BBF2C00D0F2D0 /* MapSouthTableViewController.swift in Sources */,
+				894595C125650CF6001B97E6 /* GroupDetailTableViewController.swift in Sources */,
 				893E82B0255D595400AB61AE /* ConnectionResponse.swift in Sources */,
 				893E8299255BE9BA00AB61AE /* AllGroupsViewController.swift in Sources */,
 				32D496912560CDF600E63066 /* MemberAdminCollectionViewCell.swift in Sources */,
@@ -399,7 +400,6 @@
 				32D4969D25619CE700E63066 /* AdminViewController.swift in Sources */,
 				893E8296255BE91D00AB61AE /* PersonalGroup.swift in Sources */,
 				893E82AD255D1C9D00AB61AE /* GroupInfoViewController.swift in Sources */,
-				893E82A2255BEA1000AB61AE /* GroupCenterViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
