@@ -100,6 +100,14 @@ extension FinishedGroupsViewController: UITableViewDataSource{
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let selectGroup = finishedGroups[indexPath.row]
+        if let controller = storyboard?.instantiateViewController(identifier: "GroupDetailTableViewController") as? GroupDetailTableViewController{
+            controller.group = selectGroup
+            navigationController?.pushViewController(controller, animated: true)
+        }
+    }
+    
     func dateFormatter(assembleTimeStr: String) -> String {
         var dateStr = ""
         let formatter = DateFormatter()

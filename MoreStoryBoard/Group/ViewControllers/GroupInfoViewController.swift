@@ -30,15 +30,17 @@ class GroupInfoViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
-        /* 點擊畫面任一處來關閉鍵盤 */
-        let tap = UITapGestureRecognizer(target: self, action: #selector(closedKeybored))
-        view.addGestureRecognizer(tap)
+//        /* 點擊畫面任一處來關閉鍵盤 */
+//        let tap = UITapGestureRecognizer(target: self, action: #selector(closedKeybored))
+//        view.addGestureRecognizer(tap)
     }
     
-    @objc func closedKeybored(){
-        self.view.endEditing(true)
+//    @objc func closedKeybored(){
+//        self.view.endEditing(true)
+//    }
+    
+    @IBAction func closeKeyboard(_ sender: Any) {
+        searchBar.resignFirstResponder()
     }
     
     /* 讀取所有活動 */
