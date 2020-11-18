@@ -54,7 +54,7 @@ class AllGroupsViewController: UIViewController {
 }
 
 
-extension AllGroupsViewController: UITableViewDataSource, UITableViewDelegate{
+extension AllGroupsViewController: UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         allGroups.count
     }
@@ -112,14 +112,6 @@ extension AllGroupsViewController: UITableViewDataSource, UITableViewDelegate{
         }
         
         return cell
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let selectGroup = allGroups[indexPath.row]
-        if let controller = storyboard?.instantiateViewController(identifier: "GroupDetailTableViewController") as? GroupDetailTableViewController{
-            controller.group = selectGroup
-            navigationController?.pushViewController(controller, animated: true)
-        }
     }
     
     func dateFormatter(assembleTimeStr: String) -> String {

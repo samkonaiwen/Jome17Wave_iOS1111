@@ -57,7 +57,18 @@ class InsertGroupTableViewController: UITableViewController, UIImagePickerContro
     
     @IBAction func unwindToInsertGroupView(_ unwindSegue: UIStoryboardSegue) { }
     
-
+    func setPickerView() {
+        let pickerView = UIPickerView()
+        pickerView.dataSource = self
+        pickerView.delegate = self
+        locationTextField.inputView = pickerView
+        let tap = UITapGestureRecognizer(target: self, action: #selector(closedKeybored))
+        view.addGestureRecognizer(tap)
+    }
+    
+    @objc func closedKeybored(){
+        self.view.endEditing(true)
+    }
     
     
     // MARK: - Table view data source
@@ -134,6 +145,8 @@ class InsertGroupTableViewController: UITableViewController, UIImagePickerContro
 //        dateFormatter.dateStyle = .medium
 //        dateFormatter.timeStyle = .short
         dateString = dateFormatter.string(from: datePicker.date)
+        
+        
     }
     
     /* 點擊虛擬鍵盤上return鍵會隱藏虛擬鍵盤 */
@@ -191,7 +204,7 @@ class InsertGroupTableViewController: UITableViewController, UIImagePickerContro
     /*完成按鈕*/
     @IBAction func pressedDone(_ sender: Any) {
         
-        if member == nil || groupTitleTextField.text == "" || dateString == "" || location == nil || groupLimitTextField.text == "" || memoTextView.text == "" || image == nil{
+        if member == nil || groupTitleTextField.text == "" || dateString == "" || location == nil || groupLimitTextField.text == "" || memoTextView.text == ""{
             showAlert(word: "您尚有資料未選擇")
         }else{
             
@@ -282,20 +295,5 @@ extension InsertGroupTableViewController: UIPickerViewDelegate, UIPickerViewData
         surfName = location?.name
         surfPointId = row + 1
         locationTextField.text = location?.name
-        pickerView.resignFirstResponder()
-        self.view.endEditing(true)
     }
-    
-    func setPickerView() {
-        let pickerView = UIPickerView()
-        pickerView.dataSource = self
-        pickerView.delegate = self
-        locationTextField.inputView = pickerView
-//        let tap = UITapGestureRecognizer(target: self, action: #selector(closedKeybored))
-//        view.addGestureRecognizer(tap)
-    }
-    
-//    @objc func closedKeybored(){
-//        self.view.endEditing(true)
-//    }
 }
