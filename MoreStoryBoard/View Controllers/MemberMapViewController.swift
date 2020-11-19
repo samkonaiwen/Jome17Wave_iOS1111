@@ -53,7 +53,7 @@ class MemberMapViewController: UIViewController {
 //        let span = MKCoordinateSpan(latitudeDelta: 10, longitudeDelta: 10)
         let region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 23.8523012, longitude: 120.9009427), span: MKCoordinateSpan(latitudeDelta: 10, longitudeDelta: 10))
         memberMapView.setRegion(region, animated: true)
-        memberMapView.regionThatFits(region)
+//        memberMapView.regionThatFits(region)
     }
 }
 
