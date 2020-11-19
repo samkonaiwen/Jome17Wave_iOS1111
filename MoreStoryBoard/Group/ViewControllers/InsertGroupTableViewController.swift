@@ -26,6 +26,8 @@ class InsertGroupTableViewController: UITableViewController, UIImagePickerContro
     var surfPointId: Int = 0
     var surfName: String?
     
+    var editGroup: PersonalGroup?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         loadLocations()
@@ -48,10 +50,10 @@ class InsertGroupTableViewController: UITableViewController, UIImagePickerContro
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         if let member = member{
-            captainLabel.text = member.account
-//            insertGruop?.memberId = member.memberId
-//            insertGruop?.nickname = member.nickname
-//            insertGruop?.memberGender = member.gender
+            captainLabel.text = member.nickname
+        }
+        if editGroup != nil {
+            editGroup(editGroup: editGroup!)
         }
     }
     
@@ -61,7 +63,57 @@ class InsertGroupTableViewController: UITableViewController, UIImagePickerContro
 //        self.view.endEditing(true)
 //    }
     
+    func editGroup(editGroup: PersonalGroup) {
+        captainLabel.text = editGroup.nickname
+        groupTitleTextField.text = editGroup.groupName
+        locationTextField.text = editGroup.surfName
+        if  let assembleTime = editGroup.assembleTime,
+            let groupLimit = editGroup.groupLimit,
+            let memo = editGroup.notice{
+            let editDate = setEditDate(assembleTime: assembleTime)
+            datePicker.date = editDate
+            groupLimitTextField.text = String(groupLimit)
+            memoTextView.text = memo
+        }
+        loadImage(groupId: editGroup.groupId)
+        
+    }
     
+    func setEditDate(assembleTime: String) -> Date {
+        let dateFormatter = DateFormatter()
+        var editDate = Date()
+        dateFormatter.locale = datePicker.locale
+        print("Locale.current: \(Locale.current)")
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm"
+        if let result = dateFormatter.date(from: assembleTime){
+            editDate = result
+            return editDate
+        }
+        return editDate
+    }
+    
+    func loadImage(groupId: String) {
+        /* 設定照片 */
+        let url = URL(string: "\(common_url)jome_member/GroupOperateServlet")
+        var requestParam = [String: Any]()
+        requestParam["action"] = "getImage"
+        requestParam["groupId"] = groupId
+        requestParam["imageSize"] = view.frame.width
+        var image: UIImage?
+        executeTask(url!, requestParam) { (data, response, error) in
+            if error == nil {
+                if data != nil {
+                    image = UIImage(data: data!)
+                }
+                if image == nil {
+                    image = UIImage(named: "noImage.jpg")
+                }
+                DispatchQueue.main.async {self.groupImageView.image = image}
+            } else {
+                print(error!.localizedDescription)
+            }
+        }
+    }
     // MARK: - Table view data source
 
 
@@ -223,6 +275,7 @@ class InsertGroupTableViewController: UITableViewController, UIImagePickerContro
             let nickname = member?.nickname
             var newGroup = PersonalGroup(groupId: groupId, groupName: groupName, assembleTime: assembleTime, groupEndTime: nil, signUpEnd: nil, groupLimit: groupLimit, gender: nil, notice: notice, memberId: memberId!, nickname: nickname!, memberGender: gender, attenderId: nil, attenderStatus: attenderStatus, role: role, surfName: surfName, surfPointId: surfPointId, joinCountNow: nil, groupStatus: 1)
             insertGroup(newGroup: newGroup)
+            
         }
         
     }
@@ -240,9 +293,15 @@ class InsertGroupTableViewController: UITableViewController, UIImagePickerContro
     func insertGroup(newGroup: PersonalGroup?) {
         let url = URL(string: "\(common_url)jome_member/GroupOperateServlet")
         var requestParam = [String: Any]()
-        requestParam["action"] = "creatAGroupForIOS"
-        requestParam["insertGroup"] = try! String(data: JSONEncoder().encode(newGroup), encoding: .utf8)
         
+        if editGroup == nil {
+            requestParam["action"] = "creatAGroupForIOS"
+            requestParam["insertGroup"] = try! String(data: JSONEncoder().encode(newGroup), encoding: .utf8)
+        }else{
+            requestParam["action"] = "updateGroupForIOS"
+            requestParam["updateGroup"] = try! String(data: JSONEncoder().encode(newGroup), encoding: .utf8)
+        }
+    
         if self.image != nil {
             requestParam["imageBase64"] = self.image!.jpegData(compressionQuality: 1.0)!.base64EncodedString()
         }
@@ -303,5 +362,6 @@ extension InsertGroupTableViewController: UIPickerViewDelegate, UIPickerViewData
 //    @objc func closedKeybored(){
 //        self.view.endEditing(true)
 //    }
-
 }
+
+

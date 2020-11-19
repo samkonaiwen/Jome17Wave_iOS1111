@@ -127,7 +127,7 @@
         <!--Insert Group Table View Controller-->
         <scene sceneID="u26-R4-mW6">
             <objects>
-                <tableViewController id="r68-hd-iAR" customClass="InsertGroupTableViewController" customModule="Jome17Wave_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="InsertGroupTableViewController" id="r68-hd-iAR" customClass="InsertGroupTableViewController" customModule="Jome17Wave_iOS" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="GJE-8q-g4l">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

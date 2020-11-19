@@ -21,6 +21,10 @@ class LastGroupsViewController: UIViewController {
         static let statusFinished = " 已結束 "
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.register(UINib(nibName: "GroupListTableViewCell", bundle: nil), forCellReuseIdentifier: "GroupListTableViewCell")
@@ -39,7 +43,7 @@ class LastGroupsViewController: UIViewController {
 
 }
 
-extension LastGroupsViewController: UITableViewDataSource{
+extension LastGroupsViewController: UITableViewDataSource, UITableViewDelegate{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         lastGroups.count
     }
