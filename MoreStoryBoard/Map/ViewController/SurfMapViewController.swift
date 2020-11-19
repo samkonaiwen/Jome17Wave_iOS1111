@@ -14,18 +14,19 @@ class SurfMapViewController: UIViewController {
     @IBOutlet weak var mapView: MKMapView!
     let manager = CLLocationManager()
     var getLocation = false
-    var surfPoint : [Map]?
+    var surfPoint = [Map]()
     let url_server = URL(string: common_url + "SURF_POINTServlet")
     
     override func viewDidLoad() {
         super.viewDidLoad()
         manager.requestWhenInUseAuthorization()
         mapView.register(MKAnnotationView.self, forAnnotationViewWithReuseIdentifier: "\(SurfAnnotation.self)")
+        getMapData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         getMapData()
-        mapView.reloadInputViews()
+//        mapView.reloadInputViews()
     }
     
     func getMapData() {
@@ -38,17 +39,18 @@ class SurfMapViewController: UIViewController {
                         //print("data:\(result)")
                         self.surfPoint = result
                         
-                        let annotation = result.map {
-                            SurfAnnotation(coordinate: CLLocationCoordinate2D(latitude: $0.latitude!, longitude: $0.longitude!))
-                            
-                        }
-                        
+//                        let annotations = result.map {
+//                            SurfAnnotation(coordinate: CLLocationCoordinate2D(latitude: $0.latitude!, longitude: $0.longitude!))
                         DispatchQueue.main.async {
-                            self.addSurfPoint()
-                            self.mapView.addAnnotations(annotation)
-                           
-                            
-                            
+                            var annotations = [MKPointAnnotation]()
+                            for i in 0...(self.surfPoint.count) - 1 {
+                                let annotation = MKPointAnnotation()
+                                annotation.title = self.surfPoint[i].name
+                                annotation.subtitle = self.surfPoint[i].side
+                                annotation.coordinate = CLLocationCoordinate2D(latitude: self.surfPoint[i].latitude!, longitude: self.surfPoint[i].longitude!)
+                                annotations.append(annotation)
+                            }
+                            self.mapView.showAnnotations(annotations, animated: true)
                         }
                     }
                 }
@@ -57,8 +59,6 @@ class SurfMapViewController: UIViewController {
             }
         }
     }
-    
-    
     
 }
 
@@ -88,18 +88,4 @@ extension SurfMapViewController: MKMapViewDelegate {
 //        let annotation = view.annotation as? SurfAnnotation
 //    }
     
-    func addSurfPoint() {
-        if let allSurfPoint = surfPoint {
-            let annotations: [MKAnnotation] = allSurfPoint.map {
-                let anntation = MKPointAnnotation()
-                anntation.coordinate = CLLocationCoordinate2D(latitude: $0.latitude!, longitude: $0.longitude!)
-                anntation.title = $0.name
-                
-                anntation.subtitle = $0.side
-                return anntation
-            }
-            mapView.addAnnotations(annotations)
-            
-        }
-    }
 }
