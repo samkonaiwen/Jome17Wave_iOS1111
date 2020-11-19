@@ -52,6 +52,7 @@
 		893E82BF255E6ED400AB61AE /* MemberListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 893E82BD255E6ED400AB61AE /* MemberListTableViewCell.swift */; };
 		893E82C0255E6ED400AB61AE /* MemberListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 893E82BE255E6ED400AB61AE /* MemberListTableViewCell.xib */; };
 		893E82C3255E715D00AB61AE /* Member.swift in Sources */ = {isa = PBXBuildFile; fileRef = 893E82C2255E715D00AB61AE /* Member.swift */; };
+		8989DE80256550AA00AF702B /* GroupDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8989DE7F256550AA00AF702B /* GroupDetailTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -102,6 +103,7 @@
 		893E82BD255E6ED400AB61AE /* MemberListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberListTableViewCell.swift; sourceTree = "<group>"; };
 		893E82BE255E6ED400AB61AE /* MemberListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MemberListTableViewCell.xib; sourceTree = "<group>"; };
 		893E82C2255E715D00AB61AE /* Member.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Member.swift; sourceTree = "<group>"; };
+		8989DE7F256550AA00AF702B /* GroupDetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupDetailTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -282,6 +284,7 @@
 				893E82AC255D1C9D00AB61AE /* GroupInfoViewController.swift */,
 				893E82B7255E6DDD00AB61AE /* InsertGroupTableViewController.swift */,
 				893E82BA255E6E2900AB61AE /* SelectMemberViewController.swift */,
+				8989DE7F256550AA00AF702B /* GroupDetailTableViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -383,6 +386,7 @@
 				32D4969925612BFD00E63066 /* JomeMember.swift in Sources */,
 				224E870C2553E3AC0035CF61 /* MapNorthTableViewController.swift in Sources */,
 				227D2825254BBFAC00D24B8E /* AppDelegate.swift in Sources */,
+				8989DE80256550AA00AF702B /* GroupDetailTableViewController.swift in Sources */,
 				893E829F255BE9ED00AB61AE /* FinishedGroupsViewController.swift in Sources */,
 				22C77FC3255BBF2C00D0F2D0 /* MapSouthTableViewController.swift in Sources */,
 				893E82B0255D595400AB61AE /* ConnectionResponse.swift in Sources */,
