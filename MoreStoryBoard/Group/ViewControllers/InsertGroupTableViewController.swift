@@ -57,7 +57,7 @@ class InsertGroupTableViewController: UITableViewController, UIImagePickerContro
         }
         if editGroup != nil {
             if locations != nil{
-                Thread.sleep(forTimeInterval: 2)
+                Thread.sleep(forTimeInterval: 1)
                 editGroup(editGroup: editGroup!)
             }
         }
