@@ -32,6 +32,8 @@ class GroupDetailTableViewController: UITableViewController {
         super.viewDidLoad()
         loadGroup()
         loadImage()
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(pressedEdit))
+        tableView.tableFooterView = UIView(frame: CGRect.zero)
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -96,6 +98,62 @@ class GroupDetailTableViewController: UITableViewController {
             }
         }
     }
+    
+    @objc func pressedEdit(){
+        let controller = UIAlertController(title: "揪團設定", message: "", preferredStyle: .actionSheet)
+        let editAction = UIAlertAction(title: "編輯揪團", style: .default) { (_) in
+            self.editGroup()
+        }
+        let cancelGroupAction = UIAlertAction(title: "刪除揪團", style: .destructive) { (_) in
+            self.cancelGroup(groupId: self.group.groupId)
+        }
+        let cancelAction = UIAlertAction(title: "取消", style: .cancel, handler: nil)
+        controller.addAction(editAction)
+        controller.addAction(cancelGroupAction)
+        controller.addAction(cancelAction)
+        present(controller, animated: true, completion: nil)
+    }
+    
+    func editGroup() {
+        if let controller = storyboard?.instantiateViewController(identifier: "InsertGroupTableViewController") as? InsertGroupTableViewController{
+            controller.editGroup = group
+            navigationController?.pushViewController(controller, animated: true)
+        }
+    }
+    
+    func cancelGroup(groupId: String) {
+        let controller = UIAlertController(title: "警告", message: "確定要刪除此揪團", preferredStyle: .alert)
+        let sureAction = UIAlertAction(title: "確定", style: .destructive) { (_) in
+            var requestParm = [String: Any]()
+            requestParm["action"] = "cancelGroup"
+            requestParm["cancelGroupId"] = groupId
+            executeTask(self.url!, requestParm) { (data, response, error) in
+                if error == nil{
+                    if let data = data,
+                       let result = try? JSONDecoder().decode(changeResponse.self, from: data){
+                        let resultCode = result.resultCode
+                        DispatchQueue.main.async {
+                            if resultCode > 0{
+                                self.navigationController?.popViewController(animated: true)
+                                self.tableView.reloadData()
+                            }else{
+                                print("Cancel failed! resultCode: \(resultCode)")
+                            }
+                        }
+                    }
+                }else{
+                    print(error!.localizedDescription)
+                }
+            }
+        }
+        
+        let noAction = UIAlertAction(title: "取消", style: .default, handler: nil)
+        
+        controller.addAction(sureAction)
+        controller.addAction(noAction)
+        present(controller, animated: true, completion: nil)
+    }
+    
 
 
     // MARK: - Table view data source
