@@ -21,6 +21,10 @@ class ComingGroupsViewController: UIViewController {
         static let statusFinished = " 已結束 "
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.register(UINib(nibName: "GroupListTableViewCell", bundle: nil), forCellReuseIdentifier: "GroupListTableViewCell")
@@ -39,7 +43,7 @@ class ComingGroupsViewController: UIViewController {
 
 }
 
-extension ComingGroupsViewController: UITableViewDataSource{
+extension ComingGroupsViewController: UITableViewDataSource, UITableViewDelegate{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         comingGroups.count
     }

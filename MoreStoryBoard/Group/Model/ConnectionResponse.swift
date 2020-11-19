@@ -31,6 +31,9 @@ struct GroupGetAllResponse: Decodable {
 struct changeResponse: Decodable {
     let resultCode: Int
 }
+struct GroupCancelResponse: Decodable {
+    
+}
 
 //struct InsertGroupPost: Encodable {
 //    let action: String
