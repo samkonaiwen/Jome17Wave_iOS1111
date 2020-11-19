@@ -14,7 +14,16 @@ class AdminViewController: UIViewController {
         super.viewDidLoad()
         containerViews[0].isHidden = false
         containerViews[1].isHidden = true
+        containerViews[2].isHidden = true
     }
+    
+    @IBAction func clickSegment(_ sender: UISegmentedControl) {
+        containerViews.forEach{
+            $0.isHidden = true
+        }
+        containerViews[sender.selectedSegmentIndex].isHidden = false
+    }
+    
     
 
 
