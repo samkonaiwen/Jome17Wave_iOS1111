@@ -7,21 +7,21 @@
 
 import Foundation
 struct Member: Codable {
-    let memberId: String
-    let accountStatus: Int
-    let phoneNumber: String
-    let nickname: String
-    let account: String
-    let password: String
-    let gender: Int
+    var memberId: String
+    var accountStatus: Int
+    var phoneNumber: String
+    var nickname: String
+    var account: String
+    var password: String
+    var gender: Int
     var latitude: Double?
     var longitude: Double?
-    let tokenId: String?
-    let friendCount: String?
-    let scoreAverage: String?
-    let beRankedCount: String?
-    let groupCount: String?
-    let createGroupCount: String?
+    var tokenId: String?
+    var friendCount: String?
+    var scoreAverage: String?
+    var beRankedCount: String?
+    var groupCount: String?
+    var createGroupCount: String?
     
     enum CodingKeys: String, CodingKey {
         case memberId

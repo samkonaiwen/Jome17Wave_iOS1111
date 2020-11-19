@@ -123,28 +123,28 @@ extension AllGroupsViewController: UITableViewDataSource, UITableViewDelegate{
         }
     }
     
-    func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        // 編輯按鈕
-        let editGroup = allGroups[indexPath.row]
-        let edit = UIContextualAction(style: .normal, title: "編輯") { (action, view, bool) in
-            if let controller = self.storyboard?.instantiateViewController(identifier: "InsertGroupTableViewController") as? InsertGroupTableViewController{
-                controller.editGroup = editGroup
-                self.navigationController?.pushViewController(controller, animated: true)
-            }
-        }
-        edit.backgroundColor = .lightGray
-        
-        //刪除按鈕
-        let cancel = UIContextualAction(style: .normal, title: "停團") { (action, view, bool) in
-            self.cancelGroup(groupId: editGroup.groupId)
-        }
-        cancel.backgroundColor = .red
-        
-        let swipeActions = UISwipeActionsConfiguration(actions: [cancel, edit])     //delete,edit順序 會影響顯示順序
-        // true代表滑到底視同觸發第一個動作；false代表滑到底也不會觸發任何動作
-        swipeActions.performsFirstActionWithFullSwipe = false
-        return swipeActions
-    }
+//    func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+//        // 編輯按鈕
+//        let editGroup = allGroups[indexPath.row]
+//        let edit = UIContextualAction(style: .normal, title: "編輯") { (action, view, bool) in
+//            if let controller = self.storyboard?.instantiateViewController(identifier: "InsertGroupTableViewController") as? InsertGroupTableViewController{
+//                controller.editGroup = editGroup
+//                self.navigationController?.pushViewController(controller, animated: true)
+//            }
+//        }
+//        edit.backgroundColor = .lightGray
+//
+//        //刪除按鈕
+//        let cancel = UIContextualAction(style: .normal, title: "停團") { (action, view, bool) in
+//            self.cancelGroup(groupId: editGroup.groupId)
+//        }
+//        cancel.backgroundColor = .red
+//
+//        let swipeActions = UISwipeActionsConfiguration(actions: [cancel, edit])     //delete,edit順序 會影響顯示順序
+//        // true代表滑到底視同觸發第一個動作；false代表滑到底也不會觸發任何動作
+//        swipeActions.performsFirstActionWithFullSwipe = false
+//        return swipeActions
+//    }
     
     func dateFormatter(assembleTimeStr: String) -> String {
         var dateStr = ""
@@ -160,26 +160,26 @@ extension AllGroupsViewController: UITableViewDataSource, UITableViewDelegate{
         return dateStr
     }
     
-    func cancelGroup(groupId: String) {
-        var requestParm = [String: Any]()
-        requestParm["action"] = "cancelGroup"
-        requestParm["cancelGroupId"] = groupId
-        executeTask(url!, requestParm) { (data, response, error) in
-            if error == nil{
-                if let data = data,
-                   let result = try? JSONDecoder().decode(changeResponse.self, from: data){
-                    let resultCode = result.resultCode
-                    DispatchQueue.main.async {
-                        if resultCode > 0{
-                            self.tableView.reloadData()
-                        }else{
-                            print("Cancel failed! resultCode: \(resultCode)")
-                        }
-                    }
-                }
-            }else{
-                print(error!.localizedDescription)
-            }
-        }
-    }
+//    func cancelGroup(groupId: String) {
+//        var requestParm = [String: Any]()
+//        requestParm["action"] = "cancelGroup"
+//        requestParm["cancelGroupId"] = groupId
+//        executeTask(url!, requestParm) { (data, response, error) in
+//            if error == nil{
+//                if let data = data,
+//                   let result = try? JSONDecoder().decode(changeResponse.self, from: data){
+//                    let resultCode = result.resultCode
+//                    DispatchQueue.main.async {
+//                        if resultCode > 0{
+//                            self.tableView.reloadData()
+//                        }else{
+//                            print("Cancel failed! resultCode: \(resultCode)")
+//                        }
+//                    }
+//                }
+//            }else{
+//                print(error!.localizedDescription)
+//            }
+//        }
+//    }
 }

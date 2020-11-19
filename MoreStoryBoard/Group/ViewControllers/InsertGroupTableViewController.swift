@@ -25,13 +25,14 @@ class InsertGroupTableViewController: UITableViewController, UIImagePickerContro
     var dateString: String?
     var surfPointId: Int = 0
     var surfName: String?
+    let pickerView = UIPickerView()
     
     var editGroup: PersonalGroup?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        loadLocations()
-        setPickerView()
+//        loadLocations()
+//        setPickerView()
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -49,11 +50,16 @@ class InsertGroupTableViewController: UITableViewController, UIImagePickerContro
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        loadLocations()
+        setPickerView()
         if let member = member{
             captainLabel.text = member.nickname
         }
         if editGroup != nil {
-            editGroup(editGroup: editGroup!)
+            if locations != nil{
+                Thread.sleep(forTimeInterval: 2)
+                editGroup(editGroup: editGroup!)
+            }
         }
     }
     
@@ -66,16 +72,25 @@ class InsertGroupTableViewController: UITableViewController, UIImagePickerContro
     func editGroup(editGroup: PersonalGroup) {
         captainLabel.text = editGroup.nickname
         groupTitleTextField.text = editGroup.groupName
-        locationTextField.text = editGroup.surfName
+        
         if  let assembleTime = editGroup.assembleTime,
             let groupLimit = editGroup.groupLimit,
-            let memo = editGroup.notice{
+            let memo = editGroup.notice,
+            let surfPointId = editGroup.surfPointId{
             let editDate = setEditDate(assembleTime: assembleTime)
             datePicker.date = editDate
+            dateString = editGroup.assembleTime
             groupLimitTextField.text = String(groupLimit)
             memoTextView.text = memo
+            locationTextField.text = editGroup.surfName
+            let editRow = surfPointId - 1
+            location = locations[editRow]
+            self.surfPointId = surfPointId
+            
         }
         loadImage(groupId: editGroup.groupId)
+        let editMember = Member(memberId: editGroup.memberId, accountStatus: -1, phoneNumber: "", nickname: editGroup.nickname, account: "", password: "", gender: editGroup.gender ?? -1, latitude: -1, longitude: -1, tokenId: "", friendCount: "", scoreAverage: "", beRankedCount: "", groupCount: "", createGroupCount: "")
+        self.member = editMember
         
     }
     
@@ -99,16 +114,16 @@ class InsertGroupTableViewController: UITableViewController, UIImagePickerContro
         requestParam["action"] = "getImage"
         requestParam["groupId"] = groupId
         requestParam["imageSize"] = view.frame.width
-        var image: UIImage?
+//        var image: UIImage?
         executeTask(url!, requestParam) { (data, response, error) in
             if error == nil {
                 if data != nil {
-                    image = UIImage(data: data!)
+                    self.image = UIImage(data: data!)
                 }
-                if image == nil {
-                    image = UIImage(named: "noImage.jpg")
+                if self.image == nil {
+                    self.image = UIImage(named: "noImage.jpg")
                 }
-                DispatchQueue.main.async {self.groupImageView.image = image}
+                DispatchQueue.main.async {self.groupImageView.image = self.image}
             } else {
                 print(error!.localizedDescription)
             }
@@ -204,6 +219,7 @@ class InsertGroupTableViewController: UITableViewController, UIImagePickerContro
                     self.locations = result
                 
                     DispatchQueue.main.async {
+                        self.pickerView.reloadAllComponents()
                         self.locationTextField.reloadInputViews()
                     }
             }
@@ -261,7 +277,15 @@ class InsertGroupTableViewController: UITableViewController, UIImagePickerContro
             }
             formatter.dateFormat = "yyyyMMddHHmmssss"
 //            assembleTimeFormatter.dateFormat = "yyyy-MM-dd HH:mm"
-            let groupId = formatter.string(from: Date())
+            var groupId = ""
+            var attenderStatus: Int
+            if editGroup != nil{
+                groupId = editGroup!.groupId
+                attenderStatus = editGroup!.attenderStatus!
+            }else{
+                groupId = formatter.string(from: Date())
+                attenderStatus = 1
+            }
             let groupName = title
             let assembleTime = dateString
             let surfPointId = self.surfPointId
@@ -269,11 +293,10 @@ class InsertGroupTableViewController: UITableViewController, UIImagePickerContro
             let groupLimit = Int(groupLimitTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines))
             let gender = member?.gender
             let notice = memoTextView.text!.trimmingCharacters(in: .whitespacesAndNewlines)
-            let attenderStatus = 1
             let role = 1
             let memberId = member?.memberId
             let nickname = member?.nickname
-            var newGroup = PersonalGroup(groupId: groupId, groupName: groupName, assembleTime: assembleTime, groupEndTime: nil, signUpEnd: nil, groupLimit: groupLimit, gender: nil, notice: notice, memberId: memberId!, nickname: nickname!, memberGender: gender, attenderId: nil, attenderStatus: attenderStatus, role: role, surfName: surfName, surfPointId: surfPointId, joinCountNow: nil, groupStatus: 1)
+            var newGroup = PersonalGroup(groupId: groupId, groupName: groupName, assembleTime: assembleTime, groupEndTime: nil, signUpEnd: nil, groupLimit: groupLimit, gender: 0, notice: notice, memberId: memberId!, nickname: nickname!, memberGender: gender, attenderId: nil, attenderStatus: attenderStatus, role: role, surfName: surfName, surfPointId: surfPointId, joinCountNow: nil, groupStatus: 1)
             insertGroup(newGroup: newGroup)
             
         }
@@ -312,9 +335,11 @@ class InsertGroupTableViewController: UITableViewController, UIImagePickerContro
                 let resultCode = result.resultCode
                 DispatchQueue.main.async {
                     if resultCode > 0{
-                        self.navigationController?.popViewController(animated: true)
+                        if let controller = self.storyboard?.instantiateViewController(identifier: "GroupInfoViewController") as? GroupInfoViewController{
+                            self.navigationController?.pushViewController(controller, animated: true)
+                        }
                     }else{
-                        self.showAlert(word: "新增失敗")
+                        self.showAlert(word: "動作失敗")
                     }
                 }
             }
@@ -351,7 +376,6 @@ extension InsertGroupTableViewController: UIPickerViewDelegate, UIPickerViewData
     }
     
     func setPickerView() {
-        let pickerView = UIPickerView()
         pickerView.dataSource = self
         pickerView.delegate = self
         locationTextField.inputView = pickerView
