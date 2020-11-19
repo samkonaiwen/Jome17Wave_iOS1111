@@ -21,9 +21,13 @@
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="nPg-FS-Lhd">
                                 <rect key="frame" x="0.0" y="88" width="414" height="32"/>
                                 <segments>
-                                    <segment title="First"/>
-                                    <segment title="Second"/>
+                                    <segment title="會員資料"/>
+                                    <segment title="會員位置"/>
+                                    <segment title="管理員資訊"/>
                                 </segments>
+                                <connections>
+                                    <action selector="clickSegment:" destination="yCD-J9-A6F" eventType="valueChanged" id="ake-SJ-UlR"/>
+                                </connections>
                             </segmentedControl>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YmV-kX-C8w">
                                 <rect key="frame" x="0.0" y="119" width="414" height="694"/>
@@ -37,14 +41,28 @@
                                     <segue destination="mLm-aI-mw5" kind="embed" id="zMd-7A-euW"/>
                                 </connections>
                             </containerView>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VPi-kb-93w">
+                                <rect key="frame" x="0.0" y="119" width="414" height="694"/>
+                                <connections>
+                                    <segue destination="Whl-lx-gAz" kind="embed" id="CkF-hM-VsL"/>
+                                </connections>
+                            </containerView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Bm4-jP-qGe"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="uc3-bE-7Kt" firstAttribute="trailing" secondItem="Bm4-jP-qGe" secondAttribute="trailing" id="2Dj-hF-AOA"/>
+                            <constraint firstItem="Bm4-jP-qGe" firstAttribute="trailing" secondItem="VPi-kb-93w" secondAttribute="trailing" id="3ge-8F-syO"/>
                             <constraint firstItem="nPg-FS-Lhd" firstAttribute="centerX" secondItem="AFk-V1-qma" secondAttribute="centerX" id="68g-3R-ElM"/>
+                            <constraint firstItem="uc3-bE-7Kt" firstAttribute="bottom" secondItem="Bm4-jP-qGe" secondAttribute="bottom" id="7fW-Ih-N3x"/>
                             <constraint firstItem="Bm4-jP-qGe" firstAttribute="trailing" secondItem="nPg-FS-Lhd" secondAttribute="trailing" id="9D9-kr-h9W"/>
+                            <constraint firstItem="VPi-kb-93w" firstAttribute="top" secondItem="nPg-FS-Lhd" secondAttribute="bottom" id="9cJ-mD-Fi6"/>
                             <constraint firstItem="YmV-kX-C8w" firstAttribute="top" secondItem="nPg-FS-Lhd" secondAttribute="bottom" id="9ut-Nv-rrK"/>
+                            <constraint firstItem="VPi-kb-93w" firstAttribute="leading" secondItem="Bm4-jP-qGe" secondAttribute="leading" id="Eqc-y9-g22"/>
                             <constraint firstItem="uc3-bE-7Kt" firstAttribute="bottom" secondItem="YmV-kX-C8w" secondAttribute="bottom" id="H91-vN-Ctx"/>
+                            <constraint firstItem="uc3-bE-7Kt" firstAttribute="leading" secondItem="Bm4-jP-qGe" secondAttribute="leading" id="Hgc-Dq-TzL"/>
+                            <constraint firstItem="Bm4-jP-qGe" firstAttribute="bottom" secondItem="VPi-kb-93w" secondAttribute="bottom" id="MBn-Et-V6d"/>
+                            <constraint firstItem="uc3-bE-7Kt" firstAttribute="top" secondItem="nPg-FS-Lhd" secondAttribute="bottom" id="UB2-3D-C29"/>
                             <constraint firstItem="nPg-FS-Lhd" firstAttribute="top" secondItem="Bm4-jP-qGe" secondAttribute="top" id="XtB-dQ-yIb"/>
                             <constraint firstItem="YmV-kX-C8w" firstAttribute="leading" secondItem="Bm4-jP-qGe" secondAttribute="leading" id="YPI-Qa-vkb"/>
                             <constraint firstItem="uc3-bE-7Kt" firstAttribute="trailing" secondItem="YmV-kX-C8w" secondAttribute="trailing" id="aFd-Pe-gHO"/>
@@ -59,6 +77,7 @@
                     <connections>
                         <outletCollection property="containerViews" destination="YmV-kX-C8w" collectionClass="NSMutableArray" id="mst-hK-K7D"/>
                         <outletCollection property="containerViews" destination="uc3-bE-7Kt" collectionClass="NSMutableArray" id="m5S-Rp-72r"/>
+                        <outletCollection property="containerViews" destination="VPi-kb-93w" collectionClass="NSMutableArray" id="x1Y-dD-y2x"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pxC-S0-Wrx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -194,22 +213,39 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Etp-D2-oWv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1919" y="-167"/>
+            <point key="canvasLocation" x="1983" y="-437"/>
         </scene>
-        <!--View Controller-->
+        <!--Member Map View Controller-->
         <scene sceneID="xMa-km-1O5">
             <objects>
-                <viewController id="mLm-aI-mw5" sceneMemberID="viewController">
+                <viewController id="mLm-aI-mw5" customClass="MemberMapViewController" customModule="Jome17Wave_iOS" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="CHV-cm-E7h">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="694"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Aby-zK-9hx">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="694"/>
+                            </mapView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="qoZ-Qr-gkm"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Aby-zK-9hx" firstAttribute="leading" secondItem="CHV-cm-E7h" secondAttribute="leading" id="Y5B-sz-ZrE"/>
+                            <constraint firstItem="Aby-zK-9hx" firstAttribute="bottom" secondItem="qoZ-Qr-gkm" secondAttribute="bottom" id="ap1-sQ-PpE"/>
+                            <constraint firstAttribute="bottom" secondItem="Aby-zK-9hx" secondAttribute="bottom" id="imK-fF-vIZ"/>
+                            <constraint firstItem="Aby-zK-9hx" firstAttribute="leading" secondItem="qoZ-Qr-gkm" secondAttribute="leading" id="ku3-g5-73q"/>
+                            <constraint firstAttribute="trailing" secondItem="Aby-zK-9hx" secondAttribute="trailing" id="pEt-Hd-bfo"/>
+                            <constraint firstItem="Aby-zK-9hx" firstAttribute="trailing" secondItem="qoZ-Qr-gkm" secondAttribute="trailing" id="tkh-li-aC4"/>
+                            <constraint firstItem="Aby-zK-9hx" firstAttribute="top" secondItem="CHV-cm-E7h" secondAttribute="top" id="umD-uP-IOe"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="memberMapView" destination="Aby-zK-9hx" id="jBl-7t-CFc"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zHs-2I-ryK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1920" y="337"/>
+            <point key="canvasLocation" x="1982.608695652174" y="83.705357142857139"/>
         </scene>
         <!--Member Detail Table View Controller-->
         <scene sceneID="ajV-zj-gPb">
@@ -533,7 +569,21 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kuW-GI-Xf4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2674" y="-99"/>
+            <point key="canvasLocation" x="2823" y="-369"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="TCP-m7-HDp">
+            <objects>
+                <viewController id="Whl-lx-gAz" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="G79-Ct-hea">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="694"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eth-4T-jDl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1983" y="609"/>
         </scene>
     </scenes>
     <resources>
@@ -541,7 +591,7 @@
         <image name="pencil.circle.fill" catalog="system" width="128" height="121"/>
         <image name="person.fill" catalog="system" width="128" height="120"/>
         <namedColor name="AccentColor">
-            <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.019999999552965164" green="0.2630000114440918" blue="0.3880000114440918" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

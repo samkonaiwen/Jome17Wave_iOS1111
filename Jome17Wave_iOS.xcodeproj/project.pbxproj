@@ -33,6 +33,8 @@
 		22C77FC6255BC5D500D0F2D0 /* MapWestTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C77FC5255BC5D500D0F2D0 /* MapWestTableViewController.swift */; };
 		22CE45892563D944000D1CD1 /* SurfMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22CE45882563D944000D1CD1 /* SurfMapViewController.swift */; };
 		323423BA2562AFBB00CB791D /* MemberDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 323423B92562AFBB00CB791D /* MemberDetailTableViewController.swift */; };
+		323423BE2565C13C00CB791D /* MemberAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 323423BD2565C13C00CB791D /* MemberAnnotation.swift */; };
+		323423C52565C73600CB791D /* MemberMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 323423C42565C73600CB791D /* MemberMapViewController.swift */; };
 		32D496912560CDF600E63066 /* MemberAdminCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D496902560CDF600E63066 /* MemberAdminCollectionViewCell.swift */; };
 		32D496962560E53200E63066 /* MemberAdminViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D496952560E53200E63066 /* MemberAdminViewController.swift */; };
 		32D4969925612BFD00E63066 /* JomeMember.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D4969825612BFC00E63066 /* JomeMember.swift */; };
@@ -83,6 +85,8 @@
 		22C77FC5255BC5D500D0F2D0 /* MapWestTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapWestTableViewController.swift; sourceTree = "<group>"; };
 		22CE45882563D944000D1CD1 /* SurfMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurfMapViewController.swift; sourceTree = "<group>"; };
 		323423B92562AFBB00CB791D /* MemberDetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberDetailTableViewController.swift; sourceTree = "<group>"; };
+		323423BD2565C13C00CB791D /* MemberAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberAnnotation.swift; sourceTree = "<group>"; };
+		323423C42565C73600CB791D /* MemberMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberMapViewController.swift; sourceTree = "<group>"; };
 		32D496902560CDF600E63066 /* MemberAdminCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberAdminCollectionViewCell.swift; sourceTree = "<group>"; };
 		32D496952560E53200E63066 /* MemberAdminViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberAdminViewController.swift; sourceTree = "<group>"; };
 		32D4969825612BFC00E63066 /* JomeMember.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JomeMember.swift; sourceTree = "<group>"; };
@@ -229,6 +233,7 @@
 			children = (
 				32D496952560E53200E63066 /* MemberAdminViewController.swift */,
 				323423B92562AFBB00CB791D /* MemberDetailTableViewController.swift */,
+				323423C42565C73600CB791D /* MemberMapViewController.swift */,
 				32D4969C25619CE600E63066 /* AdminViewController.swift */,
 			);
 			path = "View Controllers";
@@ -246,6 +251,7 @@
 			isa = PBXGroup;
 			children = (
 				32D4969825612BFC00E63066 /* JomeMember.swift */,
+				323423BD2565C13C00CB791D /* MemberAnnotation.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -380,6 +386,7 @@
 				893E82A5255BEA2900AB61AE /* LastGroupsViewController.swift in Sources */,
 				893E829C255BE9DA00AB61AE /* ComingGroupsViewController.swift in Sources */,
 				893E82BB255E6E2900AB61AE /* SelectMemberViewController.swift in Sources */,
+				323423C52565C73600CB791D /* MemberMapViewController.swift in Sources */,
 				32D4969925612BFD00E63066 /* JomeMember.swift in Sources */,
 				224E870C2553E3AC0035CF61 /* MapNorthTableViewController.swift in Sources */,
 				227D2825254BBFAC00D24B8E /* AppDelegate.swift in Sources */,
@@ -405,6 +412,7 @@
 				22C77FBF255B971900D0F2D0 /* MapEastTableViewController.swift in Sources */,
 				32D4969D25619CE700E63066 /* AdminViewController.swift in Sources */,
 				893E8296255BE91D00AB61AE /* PersonalGroup.swift in Sources */,
+				323423BE2565C13C00CB791D /* MemberAnnotation.swift in Sources */,
 				893E82AD255D1C9D00AB61AE /* GroupInfoViewController.swift in Sources */,
 				893E82A2255BEA1000AB61AE /* GroupCenterViewController.swift in Sources */,
 				22CE45892563D944000D1CD1 /* SurfMapViewController.swift in Sources */,

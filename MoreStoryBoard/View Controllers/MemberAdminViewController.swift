@@ -26,6 +26,10 @@ class MemberAdminViewController: UIViewController {
         self.memberCollectionView.reloadData()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        getJoMembers()
+    }
+    
     
     func getJoMembers(){
         let requestParam = ["action" : "getAllMembers"]
