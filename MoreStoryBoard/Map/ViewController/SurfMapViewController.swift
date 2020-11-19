@@ -73,19 +73,41 @@ extension SurfMapViewController: MKMapViewDelegate {
         }
     }
     
-//    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-//
-//        guard let annotation = annotation as? SurfAnnotation else { return nil}
-//
-//        let annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: "\(SurfAnnotation.self)", for: annotation)
-//
-//        annotationView.canShowCallout = true
-//
-//        return annotationView
-//    }
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        if annotation is MKUserLocation {
+            return nil
+        }
+        
+        let identifier = "annotation"
+        var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier)
+        if annotationView == nil {
+            annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+        }
+        annotationView?.image = UIImage(named: "wave")
+        let height = annotationView?.frame.height
+        annotationView?.centerOffset = CGPoint(x: 0, y: -(height!)/2)
+        annotationView?.canShowCallout = true
 
-//    func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
-//        let annotation = view.annotation as? SurfAnnotation
-//    }
+        return annotationView
+    }
+    
+    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+        guard let annoIndex = surfPoint.firstIndex(where: { (map) -> Bool in
+            return
+            map.name.hasPrefix(String((view.annotation?.title)!!))
+        }) else {
+            return
+        }
+        
+        let curMap = surfPoint[annoIndex]
+        moveRegion(lat: curMap.latitude!, lon: curMap.longitude!)
+    }
+    
+    func moveRegion(lat: Double, lon: Double) {
+        let region = MKCoordinateRegion(center:
+                      CLLocationCoordinate2D(latitude: lat, longitude: lon),
+                      latitudinalMeters: 500, longitudinalMeters: 500)
+                mapView.setRegion(region, animated: true)
+    }
     
 }
