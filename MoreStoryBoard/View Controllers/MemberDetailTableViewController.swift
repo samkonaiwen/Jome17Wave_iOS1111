@@ -190,8 +190,8 @@ class MemberDetailTableViewController: UITableViewController {
             requestParam["imageBase64"] = "noImage"
             executeTask(self.url!, requestParam) { (data, response, error) in
                 if let data = data,
-                   let result = String(data: data, encoding: .utf8){
-                    let resultCode = Int(result)
+                   let result = try? JSONDecoder().decode(changeResponse.self, from: data){
+                    let resultCode = result.resultCode
                     DispatchQueue.main.async {
                         if resultCode != 0 {
                             self.navigationController?.popViewController(animated: true)

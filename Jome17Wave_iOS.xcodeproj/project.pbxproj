@@ -35,6 +35,8 @@
 		323423BA2562AFBB00CB791D /* MemberDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 323423B92562AFBB00CB791D /* MemberDetailTableViewController.swift */; };
 		323423BE2565C13C00CB791D /* MemberAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 323423BD2565C13C00CB791D /* MemberAnnotation.swift */; };
 		323423C52565C73600CB791D /* MemberMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 323423C42565C73600CB791D /* MemberMapViewController.swift */; };
+		323423CC256675EA00CB791D /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 323423CB256675EA00CB791D /* Login.storyboard */; };
+		323423D7256680B600CB791D /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 323423D6256680B600CB791D /* LoginViewController.swift */; };
 		32D496912560CDF600E63066 /* MemberAdminCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D496902560CDF600E63066 /* MemberAdminCollectionViewCell.swift */; };
 		32D496962560E53200E63066 /* MemberAdminViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D496952560E53200E63066 /* MemberAdminViewController.swift */; };
 		32D4969925612BFD00E63066 /* JomeMember.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D4969825612BFC00E63066 /* JomeMember.swift */; };
@@ -88,6 +90,8 @@
 		323423B92562AFBB00CB791D /* MemberDetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberDetailTableViewController.swift; sourceTree = "<group>"; };
 		323423BD2565C13C00CB791D /* MemberAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberAnnotation.swift; sourceTree = "<group>"; };
 		323423C42565C73600CB791D /* MemberMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberMapViewController.swift; sourceTree = "<group>"; };
+		323423CB256675EA00CB791D /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
+		323423D6256680B600CB791D /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		32D496902560CDF600E63066 /* MemberAdminCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberAdminCollectionViewCell.swift; sourceTree = "<group>"; };
 		32D496952560E53200E63066 /* MemberAdminViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberAdminViewController.swift; sourceTree = "<group>"; };
 		32D4969825612BFC00E63066 /* JomeMember.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JomeMember.swift; sourceTree = "<group>"; };
@@ -129,6 +133,7 @@
 				220CD93B2552AFC200C325F5 /* Report.storyboard */,
 				220CD9362552AEF100C325F5 /* Map.storyboard */,
 				224E870125539B710035CF61 /* Group.storyboard */,
+				323423CB256675EA00CB791D /* Login.storyboard */,
 			);
 			path = StoryBoard;
 			sourceTree = "<group>";
@@ -205,6 +210,7 @@
 		227D2823254BBFAC00D24B8E /* MoreStoryBoard */ = {
 			isa = PBXGroup;
 			children = (
+				323423D02566763800CB791D /* Login */,
 				893E828C255BE89F00AB61AE /* Group */,
 				2208B7112551826300D4A9C1 /* Common */,
 				2208B7082551815500D4A9C1 /* Map */,
@@ -218,6 +224,38 @@
 				227D2832254BBFAE00D24B8E /* Info.plist */,
 			);
 			path = MoreStoryBoard;
+			sourceTree = "<group>";
+		};
+		323423D02566763800CB791D /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				323423D42566766E00CB791D /* View Controllers */,
+				323423D22566765400CB791D /* Views */,
+				323423D12566764900CB791D /* Model */,
+			);
+			name = Login;
+			sourceTree = "<group>";
+		};
+		323423D12566764900CB791D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		323423D22566765400CB791D /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		323423D42566766E00CB791D /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				323423D6256680B600CB791D /* LoginViewController.swift */,
+			);
+			name = "View Controllers";
 			sourceTree = "<group>";
 		};
 		32D496882560C17800E63066 /* Admin */ = {
@@ -372,6 +410,7 @@
 				893E82AA255BEB3300AB61AE /* GroupListTableViewCell.xib in Resources */,
 				224E87082553BB710035CF61 /* MapListTableViewCell.xib in Resources */,
 				227D282C254BBFAC00D24B8E /* Main.storyboard in Resources */,
+				323423CC256675EA00CB791D /* Login.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -406,6 +445,7 @@
 				2224A2CD2558F89A00084E63 /* MapUpdateTableViewController.swift in Sources */,
 				227D2827254BBFAC00D24B8E /* SceneDelegate.swift in Sources */,
 				224E87072553BB710035CF61 /* MapListTableViewCell.swift in Sources */,
+				323423D7256680B600CB791D /* LoginViewController.swift in Sources */,
 				893E82C3255E715D00AB61AE /* Member.swift in Sources */,
 				226079DB2564C850002627FD /* SurfAnnotation.swift in Sources */,
 				323423BA2562AFBB00CB791D /* MemberDetailTableViewController.swift in Sources */,

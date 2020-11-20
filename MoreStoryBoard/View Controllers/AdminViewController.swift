@@ -15,6 +15,13 @@ class AdminViewController: UIViewController {
         containerViews[0].isHidden = false
         containerViews[1].isHidden = true
         containerViews[2].isHidden = true
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "登出", style: .plain, target: self, action: #selector(logout))
+    }
+    
+    @objc func logout() {
+        let storyboard = UIStoryboard(name: "Login", bundle: nil)
+        view.window?.rootViewController = storyboard.instantiateInitialViewController()
     }
     
     @IBAction func clickSegment(_ sender: UISegmentedControl) {

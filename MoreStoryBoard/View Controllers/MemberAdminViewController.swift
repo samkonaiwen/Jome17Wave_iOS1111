@@ -14,6 +14,7 @@ class MemberAdminViewController: UIViewController {
     let url = URL(string: "\(common_url)jome_member/LoginServlet")
     var allMembers = [JomeMember]()
     var members = [JomeMember]()
+    let barButton = UIBarButtonItem()
 
     
     
@@ -22,6 +23,8 @@ class MemberAdminViewController: UIViewController {
         memberCollectionView.delegate = self
         memberCollectionView.dataSource = self
         searchBar.delegate = self
+        
+        
         getJoMembers()
         self.memberCollectionView.reloadData()
     }
@@ -46,6 +49,9 @@ class MemberAdminViewController: UIViewController {
             }
         }
     }
+    
+
+
 }
 
 extension MemberAdminViewController: UISearchBarDelegate{
@@ -114,10 +120,8 @@ extension MemberAdminViewController: UICollectionViewDataSource{
             }
         }
         
-        
         return cell
     }
-    
     
 }
 
