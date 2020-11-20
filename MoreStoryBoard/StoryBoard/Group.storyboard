@@ -103,9 +103,6 @@
                             <constraint firstItem="zXx-lP-I2i" firstAttribute="trailing" secondItem="qw1-Fl-bXc" secondAttribute="trailing" id="dQ8-gz-TCm"/>
                             <constraint firstItem="zXx-lP-I2i" firstAttribute="leading" secondItem="qw1-Fl-bXc" secondAttribute="leading" id="kRX-zJ-4dH"/>
                         </constraints>
-                        <connections>
-                            <action selector="closeKeyboard:" destination="P32-7a-Izj" eventType="valueChanged" id="9Oe-Ql-akw"/>
-                        </connections>
                     </view>
                     <navigationItem key="navigationItem" id="LVN-NC-HgR">
                         <barButtonItem key="rightBarButtonItem" style="plain" systemItem="add" id="3vw-aG-exh">
@@ -323,7 +320,7 @@
                                                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="請輸入參加人數" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4l2-ya-C4P">
                                                             <rect key="frame" x="0.0" y="0.0" width="329.5" height="21.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                            <textInputTraits key="textInputTraits"/>
+                                                            <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                                             <connections>
                                                                 <action selector="pressedKeyboardReturn:" destination="r68-hd-iAR" eventType="editingDidEndOnExit" id="DXC-4O-TJP"/>
                                                             </connections>

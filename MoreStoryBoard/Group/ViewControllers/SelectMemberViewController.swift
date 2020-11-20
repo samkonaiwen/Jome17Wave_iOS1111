@@ -22,7 +22,13 @@ class SelectMemberViewController: UIViewController {
         super.viewDidLoad()
         self.tableView.register(UINib(nibName: "MemberListTableViewCell", bundle: nil), forCellReuseIdentifier: "MemberListTableViewCell")
         fetchMembers()
-        // Do any additional setup after loading the view.
+        let tap = UITapGestureRecognizer(target: self, action: #selector(closedKeybored))
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
+    }
+
+    @objc func closedKeybored(){
+        self.view.endEditing(true)
     }
     
     func fetchMembers() {

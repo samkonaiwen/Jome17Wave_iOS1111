@@ -44,9 +44,14 @@ class InsertGroupTableViewController: UITableViewController, UIImagePickerContro
         if Locale.current.description.contains("TW") {
             datePicker.locale = Locale(identifier: "zh_TW")
         }
-        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(closedKeybored))
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
     }
-    
+
+    @objc func closedKeybored(){
+        self.view.endEditing(true)
+    }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -65,10 +70,7 @@ class InsertGroupTableViewController: UITableViewController, UIImagePickerContro
     
     @IBAction func unwindToInsertGroupView(_ unwindSegue: UIStoryboardSegue) { }
     
-//    @objc func closedKeybored(){
-//        self.view.endEditing(true)
-//    }
-    
+
     func editGroup(editGroup: PersonalGroup) {
         captainLabel.text = editGroup.nickname
         groupTitleTextField.text = editGroup.groupName
@@ -370,8 +372,8 @@ extension InsertGroupTableViewController: UIPickerViewDelegate, UIPickerViewData
         surfName = location?.name
         surfPointId = row + 1
         locationTextField.text = location?.name
-        pickerView.resignFirstResponder()
-        self.view.endEditing(true)
+//        pickerView.resignFirstResponder()
+//        self.view.endEditing(true)
 
     }
     
