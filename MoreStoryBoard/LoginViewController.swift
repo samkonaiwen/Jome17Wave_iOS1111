@@ -12,8 +12,11 @@ class LoginViewController: UIViewController {
 
     @IBOutlet weak var accountTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
-    
     @IBOutlet weak var bg: UIImageView!
+    
+    @IBOutlet var loginButtons: [UIButton]!
+    
+    
     let url = URL(string: "\(common_url)jome_member/AdminServlet")
     var player: AVPlayer?
     var layer: AVPlayerLayer?
@@ -25,6 +28,20 @@ class LoginViewController: UIViewController {
 
         
     }
+    
+    @IBAction func clickAdmins(_ sender: UIButton) {
+        if sender  == loginButtons[0] {
+            accountTextField.text = "admin00"
+        }
+        if sender  == loginButtons[1] {
+            accountTextField.text = "adminsam"
+        }
+        if sender  == loginButtons[2] {
+            accountTextField.text = "adminkarena"
+        }
+        passwordTextField.text = "password"
+    }
+    
     
     @IBAction func clickLogin(_ sender: Any) {
         

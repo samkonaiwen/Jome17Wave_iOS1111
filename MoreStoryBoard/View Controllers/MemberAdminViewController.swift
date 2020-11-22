@@ -89,12 +89,20 @@ extension MemberAdminViewController: UICollectionViewDataSource{
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = memberCollectionView.dequeueReusableCell(withReuseIdentifier: "\(MemberAdminCollectionViewCell.self)", for: indexPath) as! MemberAdminCollectionViewCell
-        cell.backgroundColor = #colorLiteral(red: 0.9607843161, green: 0.7058823705, blue: 0.200000003, alpha: 1)
+        
+
+        
         
         cell.image = nil
         
         let member = members[indexPath.item]
-//        print("indexPath.item: \(indexPath.item)")
+        
+        if member.accountStatus == 1 {
+            cell.backgroundColor = #colorLiteral(red: 0.9607843161, green: 0.7058823705, blue: 0.200000003, alpha: 1)
+        }else {
+            cell.backgroundColor = #colorLiteral(red: 0.1019607857, green: 0.2784313858, blue: 0.400000006, alpha: 1)
+        }
+        
         cell.memberIdLabel.text = member.memberId
         cell.memberNameLabel.text = member.nickname
         

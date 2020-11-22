@@ -57,16 +57,47 @@
                                     <constraint firstAttribute="trailing" secondItem="l6Q-tN-WIp" secondAttribute="trailing" id="m5A-KC-cA4"/>
                                 </constraints>
                             </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="xg5-V0-Tih" userLabel="QuickSV">
+                                <rect key="frame" x="347.5" y="560" width="30" height="179"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UQM-go-2N6">
+                                        <rect key="frame" x="0.0" y="0.0" width="30" height="36"/>
+                                        <connections>
+                                            <action selector="clickAdmins:" destination="eud-z1-FBX" eventType="touchUpInside" id="1tB-If-pze"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ckd-JL-hZi">
+                                        <rect key="frame" x="0.0" y="71.5" width="30" height="36"/>
+                                        <connections>
+                                            <action selector="clickAdmins:" destination="eud-z1-FBX" eventType="touchUpInside" id="vLW-B5-BPL"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YY4-MK-e1n">
+                                        <rect key="frame" x="0.0" y="143.5" width="30" height="35.5"/>
+                                        <connections>
+                                            <action selector="clickAdmins:" destination="eud-z1-FBX" eventType="touchUpInside" id="FUs-lG-5AZ"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="UQM-go-2N6" firstAttribute="height" secondItem="xg5-V0-Tih" secondAttribute="height" multiplier="0.2" id="CIq-EI-zBH"/>
+                                    <constraint firstItem="YY4-MK-e1n" firstAttribute="height" secondItem="xg5-V0-Tih" secondAttribute="height" multiplier="0.2" id="c8S-QN-e5J"/>
+                                    <constraint firstItem="Ckd-JL-hZi" firstAttribute="height" secondItem="xg5-V0-Tih" secondAttribute="height" multiplier="0.2" id="xom-oW-EVc"/>
+                                </constraints>
+                            </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Z1K-Pw-nR7"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="xg5-V0-Tih" firstAttribute="height" secondItem="yRU-pB-4BY" secondAttribute="height" multiplier="0.2" id="05Y-wE-xMd"/>
                             <constraint firstItem="ced-3D-1Zl" firstAttribute="top" secondItem="yRU-pB-4BY" secondAttribute="top" id="49L-7M-pcd"/>
+                            <constraint firstItem="xg5-V0-Tih" firstAttribute="centerX" secondItem="yRU-pB-4BY" secondAttribute="centerX" multiplier="1.75" id="5Pc-V6-9fp"/>
                             <constraint firstAttribute="trailing" secondItem="ced-3D-1Zl" secondAttribute="trailing" id="HC6-TI-q5T"/>
                             <constraint firstItem="VUK-ZH-6Jl" firstAttribute="centerX" secondItem="yRU-pB-4BY" secondAttribute="centerX" id="VKU-Lb-XYE"/>
                             <constraint firstItem="VUK-ZH-6Jl" firstAttribute="width" secondItem="yRU-pB-4BY" secondAttribute="width" multiplier="0.5" id="Wng-4x-n2N"/>
                             <constraint firstAttribute="bottom" secondItem="ced-3D-1Zl" secondAttribute="bottom" id="ZDe-Hw-0Vk"/>
                             <constraint firstItem="VUK-ZH-6Jl" firstAttribute="centerY" secondItem="yRU-pB-4BY" secondAttribute="centerY" multiplier="1.1" id="ZVd-Kl-w0U"/>
+                            <constraint firstItem="xg5-V0-Tih" firstAttribute="centerY" secondItem="yRU-pB-4BY" secondAttribute="centerY" multiplier="1.45" id="ijO-nb-I3e"/>
                             <constraint firstItem="ced-3D-1Zl" firstAttribute="leading" secondItem="yRU-pB-4BY" secondAttribute="leading" id="wen-2v-W7Y"/>
                         </constraints>
                     </view>
@@ -74,6 +105,9 @@
                         <outlet property="accountTextField" destination="l6Q-tN-WIp" id="En9-wG-Kza"/>
                         <outlet property="bg" destination="ced-3D-1Zl" id="nEe-SN-zxu"/>
                         <outlet property="passwordTextField" destination="PwN-lm-QdK" id="g9n-0F-bsz"/>
+                        <outletCollection property="loginButtons" destination="UQM-go-2N6" collectionClass="NSMutableArray" id="caN-aO-eBF"/>
+                        <outletCollection property="loginButtons" destination="Ckd-JL-hZi" collectionClass="NSMutableArray" id="FgL-Es-BbZ"/>
+                        <outletCollection property="loginButtons" destination="YY4-MK-e1n" collectionClass="NSMutableArray" id="vjL-Uk-lsA"/>
                         <segue destination="X7G-69-dVg" kind="presentation" identifier="loginSegue" modalPresentationStyle="fullScreen" id="RAo-JB-sZX"/>
                     </connections>
                 </viewController>

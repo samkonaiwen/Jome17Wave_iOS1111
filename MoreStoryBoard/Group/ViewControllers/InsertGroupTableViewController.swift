@@ -307,7 +307,7 @@ class InsertGroupTableViewController: UITableViewController, UIImagePickerContro
     
     //showAlert
     func showAlert(word: String) {
-        let alertController = UIAlertController(title: word, message: "記得在檢查一下唷！", preferredStyle: UIAlertController.Style.alert)
+        let alertController = UIAlertController(title: word, message: "記得再檢查一下唷！", preferredStyle: UIAlertController.Style.alert)
         let okAction = UIAlertAction(title: "好", style: UIAlertAction.Style.default)
         alertController.addAction(okAction)
         self.present(alertController, animated: true, completion: nil)

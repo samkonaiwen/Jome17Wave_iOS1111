@@ -12,9 +12,11 @@ class MemberDetailTableViewController: UITableViewController {
     @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet var memberLabels: [UILabel]!
     @IBOutlet var memberTextFields: [UITextField]!
+    @IBOutlet weak var accountSwitch: UISwitch!
     
     var joMember: JomeMember?
     var url: URL?
+    var accountStatus: Int = -1
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,9 +28,11 @@ class MemberDetailTableViewController: UITableViewController {
             print("joMember is nil!")
             return }
         
-        memberLabels[0].text = transGender2Icon(member.gender!)
-        memberLabels[1].text = member.memberId
-        memberLabels[2].text = String("\(formateDate(member.modifyDate!))")
+        memberLabels[2].text = transGender2Icon(member.gender!)
+        memberLabels[0].text = member.memberId
+        memberLabels[1].text = formateDate(member.modifyDate!)
+        
+        loadValue2Switch(member.accountStatus!)
         
         memberTextFields[0].text = member.account
         memberTextFields[1].text = member.password
@@ -60,10 +64,30 @@ class MemberDetailTableViewController: UITableViewController {
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
     }
+    
+    @IBAction func clickLocation(_ sender: Any) {
+        let singleMemberMapVC = UIStoryboard(name: "Admin", bundle: nil).instantiateViewController(withIdentifier: "\(SingleMemberMapViewController.self)") as? SingleMemberMapViewController
+        
+        singleMemberMapVC?.member = self.joMember
+        singleMemberMapVC?.image = self.profileImageView.image
+        
+        self.navigationController?.pushViewController(singleMemberMapVC!, animated: true)
+    }
+    
         
     @IBAction func close(_ sender: Any) {
     }
     
+    
+    @IBAction func switchValueChange(_ sender: Any) {
+        navigationItem.rightBarButtonItem?.isEnabled = true
+        
+        if accountSwitch.isOn {
+            accountStatus = 1
+        }else{
+            accountStatus = 0
+        }
+    }
     
     @IBAction func accountModify(_ sender: Any) {
         if navigationItem.rightBarButtonItem?.isEnabled != true {
@@ -110,14 +134,21 @@ class MemberDetailTableViewController: UITableViewController {
         return icon
     }
     
-    func formateDate(_ dateStr: String) -> Date {
+    func formateDate(_ dateStr: String) -> String {
         var date: Date = Date()
+        var shortStlyeStr  = ""
         let strFormat = DateFormatter()
         strFormat.dateFormat = "yyyy-MM-dd HH:mm"
         if let afterFormatDate = strFormat.date(from: dateStr) {
             date = afterFormatDate
         }
-        return date
+        strFormat.locale = Locale.current
+        strFormat.dateStyle = .short
+        strFormat.timeStyle = .short
+        
+        shortStlyeStr = strFormat.string(from: date)
+
+        return shortStlyeStr
     }
     
     func textFieldsEnableOrNot(_ bool: Bool) {
@@ -133,9 +164,16 @@ class MemberDetailTableViewController: UITableViewController {
         textField.textColor = #colorLiteral(red: 0.1019607857, green: 0.2784313858, blue: 0.400000006, alpha: 1)
         
     }
+    
+    func loadValue2Switch(_ accountStatus: Int) {
+        if accountStatus == 1 {
+            accountSwitch.isOn = true
+        }else{
+            accountSwitch.isOn = false
+        }
+    }
         
     @objc func clickSaveBarItem() {
-        
         let alertController = UIAlertController(title: "請檢查欄位", message: "不能有空白喔！", preferredStyle: .alert)
         
         
@@ -182,7 +220,7 @@ class MemberDetailTableViewController: UITableViewController {
         
         let submitAlertController = UIAlertController(title: "更新確認", message: "確認要更新會員資料？", preferredStyle: .actionSheet)
         let submitAction = UIAlertAction(title: "確定", style: .default){ [self]_ in
-            let submitMember = JomeMember(memberId: joMember?.memberId, accountStatus: joMember?.accountStatus, phoneNumber: phoneNumber, nickname: nickname, account: account, password: password, gender: joMember?.gender, latitude: joMember?.latitude, longitude: joMember?.longitude, tokenId: joMember?.tokenId, friendCount: joMember?.friendCount, scoreAverage: joMember?.scoreAverage, beRankedCount: joMember?.beRankedCount, groupCount: joMember?.groupCount, createGroupCount: joMember?.createGroupCount, modifyDate: joMember?.modifyDate)
+            let submitMember = JomeMember(memberId: joMember?.memberId, accountStatus: accountStatus, phoneNumber: phoneNumber, nickname: nickname, account: account, password: password, gender: joMember?.gender, latitude: joMember?.latitude, longitude: joMember?.longitude, tokenId: joMember?.tokenId, friendCount: joMember?.friendCount, scoreAverage: joMember?.scoreAverage, beRankedCount: joMember?.beRankedCount, groupCount: joMember?.groupCount, createGroupCount: joMember?.createGroupCount, modifyDate: joMember?.modifyDate)
             
             var requestParam = [String: Any]()
             requestParam["action"] = "update"
@@ -196,6 +234,7 @@ class MemberDetailTableViewController: UITableViewController {
                         if resultCode != 0 {
                             self.navigationController?.popViewController(animated: true)
                             print("resultCode~~~~~~~~~~~~~~: \(resultCode)")
+                            
                         }
                     }
                 }

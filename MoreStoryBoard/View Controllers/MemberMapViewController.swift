@@ -14,7 +14,7 @@ class MemberMapViewController: UIViewController {
     var allMembers = [JomeMember]()
     var members = [JomeMember]()
     var annotations = [MKPointAnnotation]()
-    var image = UIImage(named: "noImage")
+    var image: UIImage?
 
     @IBOutlet weak var memberMapView: MKMapView!
     
@@ -22,32 +22,46 @@ class MemberMapViewController: UIViewController {
         super.viewDidLoad()
         memberMapView.delegate = self
         
-        setMapRegion()
-//        memberMapView.setCenter(CLLocationCoordinate2D(latitude: 25.155790, longitude: 121.547742), animated: true)
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        setMapRegion()
         getMemberData()
 
     }
     
     func getMemberData() {
+//        let geocoder = CLGeocoder()
         let requestParam = ["action" : "getAllMembers"]
         executeTask(url!, requestParam) { (data, resp, error) in
             if let result = try? JSONDecoder().decode([JomeMember].self, from: data!){
-
                 DispatchQueue.main.async {
                     self.allMembers = result
                     self.members = self.allMembers
-
                     self.annotations = self.members.map {
                         let annotation = MKPointAnnotation()
                         annotation.coordinate = CLLocationCoordinate2D(latitude: $0.latitude!, longitude: $0.longitude!)
                         annotation.title = $0.nickname
                         return annotation
                     }
+                    print("annotations.count: \(self.annotations.count)")
                     self.memberMapView.showAnnotations(self.annotations, animated: true)
+//                    for i in 0...(self.members.count) - 1 {
+//                        let location = CLLocation(latitude: self.members[i].latitude!, longitude: self.members[i].longitude!)
+//                        let nickname = self.members[i].nickname
+//                        geocoder.reverseGeocodeLocation(location) { (placemarks, error) in
+//                            if let placemarks = placemarks,
+//                               let placemark = placemarks.first{
+//                                subtitleStr = "\(placemark.country)\t\(placemark.locality)"
+//                            }
+//                        }
+//                        let annotation = MKPointAnnotation()
+//                        annotation.coordinate = location.coordinate
+//                        annotation.title = nickname
+//                        annotation.subtitle = subtitleStr
+//                        print("subtitleStr~~~~~~~~: \(subtitleStr)")
+//                        self.annotations.append(annotation)
+//                    }
+
                 }
             }
         }
@@ -74,49 +88,40 @@ extension MemberMapViewController: MKMapViewDelegate {
             return
             (member.nickname?.hasPrefix(String((view.annotation?.title)!!)))!
         }) else { return }
+        
         let selectMember = members[annotationIndex]
-        moveRegion(lat: selectMember.latitude!, lon: selectMember.longitude!)
+        
+        var requestParam1 = [String: Any]()
+        requestParam1 = ["action" : "getImage"]
+        requestParam1["memberId"] = self.members[annotationIndex].memberId
+        
+        requestParam1["imageSize"] = memberMapView.frame.width / 2
+        executeTask(url!, requestParam1) { (data, resp, error) in
+            if let data = data {
+                DispatchQueue.main.async {
+                    self.image = nil
+                    self.image = UIImage(data: data)
+                    self.moveRegion(lat: selectMember.latitude!, lon: selectMember.longitude!)
+                }
+            }
+        }
     }
     
-//    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-//        let identifier = "annotation"
-//        var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier)
-//        if annotationView == nil {
-//            /* 使用MKPinAnnotationView會有預設圖針 */
-//            annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: identifier)
-//        }
-//
-//        var memberIndex = 0
-//        for i in 0...(members.count) - 1 {
-//            if ((members[i].nickname?.hasPrefix(String((annotation.title)!!))) != nil) {
-//                memberIndex = i
-//            }
-//        }
-//
-//        var requestParam = [String: Any]()
-//        requestParam["action"] = "getImage"
-//        requestParam["memberId"] = self.members[memberIndex].memberId
-//        requestParam["imageSize"] = memberMapView.frame.width / 10
-//        executeTask(url!, requestParam) { (data, resp, error) in
-//            if error == nil {
-//                if data != nil {
-//                    self.image = UIImage(data: data!)
-//                }
-//                if self.image == nil {
-//                    self.image = UIImage(named: "noImage.jpg")
-//                }
-//                DispatchQueue.main.async {
-//                    annotationView?.image = self.image
-//                    let height = annotationView?.frame.height
-//                    annotationView?.centerOffset = CGPoint(x: 0, y: -(height!) / 2)
-//                }
-//            } else {
-//                print(error!.localizedDescription)
-//            }
-//        }
-//
-//        return annotationView
-//    }
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        
+        let identifier = "annotation"
+        var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier)
+        if annotationView == nil {
+            /* 使用MKPinAnnotationView會有預設圖針 */
+            annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+        }
+        annotationView?.canShowCallout = true
+        let leftIconView = UIImageView(frame: CGRect.init(x: 0, y: 0, width: 50, height: 50))
+        leftIconView.image = self.image
+        annotationView?.leftCalloutAccessoryView = leftIconView
+        
+        return annotationView
+    }
     
     
 
