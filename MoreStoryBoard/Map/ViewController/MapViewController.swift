@@ -117,6 +117,10 @@ class MapViewController: UIViewController, UISearchBarDelegate {
         westSurfTableController?.westSurf = westSurf
         westSurfTableController?.westTableView.reloadData()
     }
+    
+    @IBAction func unwindToMapViewController(_ unwindSegue: UIStoryboardSegue) {
+    }
+    
     /*
     // MARK: - Navigation
 

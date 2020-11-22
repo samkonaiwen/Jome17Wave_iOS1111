@@ -115,8 +115,7 @@ class MapUpdateTableViewController: UITableViewController, UIImagePickerControll
                         if let count = Int(result) {
                             DispatchQueue.main.async {
                                 if count != 0 {
-                                    let mapController = self.storyboard?.instantiateViewController(withIdentifier: "\(MapViewController.self)") as! MapViewController
-                                    self.navigationController?.pushViewController(mapController, animated: true)
+                                    self.performSegue(withIdentifier: "unwindToMapViewController", sender: nil)
                                 }
                             }
                         }
@@ -127,6 +126,7 @@ class MapUpdateTableViewController: UITableViewController, UIImagePickerControll
             }
         }
     }
+    
     
     
     @IBAction func didEndOnExit(_ sender: Any) {
