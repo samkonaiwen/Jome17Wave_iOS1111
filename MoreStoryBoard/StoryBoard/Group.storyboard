@@ -400,9 +400,11 @@
                         <outlet property="groupTitleTextField" destination="igP-Xd-TAR" id="eug-PX-bCE"/>
                         <outlet property="locationTextField" destination="Ljd-gf-avO" id="48L-Ub-pTs"/>
                         <outlet property="memoTextView" destination="JHR-Te-KeQ" id="61F-ij-Oxb"/>
+                        <segue destination="AZG-oh-cr5" kind="unwind" identifier="backToGroupInfo" unwindAction="unwindToGroupInfoViewController:" id="hRk-cE-xcy"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Dq8-GV-EqQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="AZG-oh-cr5" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2105.7971014492755" y="103.79464285714285"/>
         </scene>

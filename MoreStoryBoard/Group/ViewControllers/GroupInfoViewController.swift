@@ -37,12 +37,14 @@ class GroupInfoViewController: UIViewController {
         view.addGestureRecognizer(tap)
     }
 
+    
     @objc func closedKeybored(){
         self.view.endEditing(true)
     }
     
-    @IBAction func closeKeyboard(_ sender: Any) {
-        searchBar.resignFirstResponder()
+    @IBAction func unwindToGroupInfoViewController(_ unwindSegue: UIStoryboardSegue) {
+//        let sourceViewController = unwindSegue.source
+        // Use data from the view controller which initiated the unwind segue
     }
     
     /* 讀取所有活動 */
