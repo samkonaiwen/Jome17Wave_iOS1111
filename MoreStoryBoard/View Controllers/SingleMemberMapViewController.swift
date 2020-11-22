@@ -27,6 +27,8 @@ class SingleMemberMapViewController: UIViewController {
         let annotation = MKPointAnnotation()
         annotation.coordinate = location.coordinate
         annotation.title = member.nickname
+        
+        //經緯度轉地址
         geocoder.reverseGeocodeLocation(location) { (placemarks, error) in
             if let placemarks = placemarks,
                let placemark = placemarks.first{
