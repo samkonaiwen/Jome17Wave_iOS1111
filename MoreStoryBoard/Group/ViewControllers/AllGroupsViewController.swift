@@ -42,6 +42,8 @@ class AllGroupsViewController: UIViewController {
         refreshControl.addTarget(self, action: #selector(GroupInfoViewController.fetchAllGroups), for: .valueChanged)
         self.tableView.refreshControl = refreshControl
     }
+    
+    
     /*
     // MARK: - Navigation
 

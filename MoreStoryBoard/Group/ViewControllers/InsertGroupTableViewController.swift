@@ -337,9 +337,10 @@ class InsertGroupTableViewController: UITableViewController, UIImagePickerContro
                 let resultCode = result.resultCode
                 DispatchQueue.main.async {
                     if resultCode > 0{
-                        if let controller = self.storyboard?.instantiateViewController(identifier: "GroupInfoViewController") as? GroupInfoViewController{
-                            self.navigationController?.pushViewController(controller, animated: true)
-                        }
+                        self.performSegue(withIdentifier: "backToGroupInfo", sender: nil)
+//                        if let controller = self.storyboard?.instantiateViewController(identifier: "GroupInfoViewController") as? GroupInfoViewController{
+//                            self.navigationController?.pushViewController(controller, animated: true)
+//                        }
                     }else{
                         self.showAlert(word: "動作失敗")
                     }
@@ -348,6 +349,8 @@ class InsertGroupTableViewController: UITableViewController, UIImagePickerContro
             
         }
     }
+    
+    
 }
 
 extension InsertGroupTableViewController: UIPickerViewDelegate, UIPickerViewDataSource{
