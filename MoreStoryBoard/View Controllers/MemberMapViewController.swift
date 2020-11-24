@@ -45,6 +45,9 @@ class MemberMapViewController: UIViewController {
                     }
                     print("annotations.count: \(self.annotations.count)")
                     self.memberMapView.showAnnotations(self.annotations, animated: true)
+                    
+                    self.memberMapView.addAnnotations(self.annotations)
+                    self.setMapRegion()
 //                    for i in 0...(self.members.count) - 1 {
 //                        let location = CLLocation(latitude: self.members[i].latitude!, longitude: self.members[i].longitude!)
 //                        let nickname = self.members[i].nickname
@@ -69,7 +72,7 @@ class MemberMapViewController: UIViewController {
     
     func setMapRegion() {
 
-        let region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 23.8523012, longitude: 120.9009427), latitudinalMeters: 20000, longitudinalMeters: 20000)
+        let region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 23.8523012, longitude: 120.9009427), latitudinalMeters: 200000, longitudinalMeters: 200000)
         memberMapView.setRegion(region, animated: true)
         memberMapView.regionThatFits(region)
     }
@@ -107,21 +110,21 @@ extension MemberMapViewController: MKMapViewDelegate {
         }
     }
     
-    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-        
-        let identifier = "annotation"
-        var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier)
-        if annotationView == nil {
-            /* 使用MKPinAnnotationView會有預設圖針 */
-            annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: identifier)
-        }
-        annotationView?.canShowCallout = true
-        let leftIconView = UIImageView(frame: CGRect.init(x: 0, y: 0, width: 50, height: 50))
-        leftIconView.image = self.image
-        annotationView?.leftCalloutAccessoryView = leftIconView
-        
-        return annotationView
-    }
+//    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+//
+//        let identifier = "annotation"
+//        var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier)
+//        if annotationView == nil {
+//            /* 使用MKPinAnnotationView會有預設圖針 */
+//            annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+//        }
+//        annotationView?.canShowCallout = true
+//        let leftIconView = UIImageView(frame: CGRect.init(x: 0, y: 0, width: 50, height: 50))
+//        leftIconView.image = self.image
+//        annotationView?.leftCalloutAccessoryView = leftIconView
+//
+//        return annotationView
+//    }
     
     
 
