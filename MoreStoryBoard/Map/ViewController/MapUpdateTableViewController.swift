@@ -108,7 +108,7 @@ class MapUpdateTableViewController: UITableViewController, UIImagePickerControll
         if self.imageUpload != nil {
             requestParam["imageBase64"] = self.imageUpload!.jpegData(compressionQuality: 1.0)!.base64EncodedString()
         }
-        executeTask(self.url_server!, requestParam) { (data, response, error) in
+        executeTask(self.url_server!, requestParam)  { (data, response, error) in
             if error == nil {
                 if data != nil {
                     if let result = String(data: data!, encoding: .utf8) {
