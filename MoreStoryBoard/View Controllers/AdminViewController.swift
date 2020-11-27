@@ -20,8 +20,19 @@ class AdminViewController: UIViewController {
     }
     
     @objc func logout() {
-        let storyboard = UIStoryboard(name: "Login", bundle: nil)
-        view.window?.rootViewController = storyboard.instantiateInitialViewController()
+        let logoutAlertController = UIAlertController(title: "登出確認", message: "你確定要登出管理系統嗎？", preferredStyle: .alert)
+        
+        let logout = UIAlertAction(title: "登出", style: .default) { (UIAlertAction) in
+            let storyboard = UIStoryboard(name: "Login", bundle: nil)
+            self.view.window?.rootViewController = storyboard.instantiateInitialViewController()
+        }
+        
+        let cancel = UIAlertAction(title: "取消", style: .cancel, handler: nil)
+        
+        logoutAlertController.addAction(logout)
+        logoutAlertController.addAction(cancel)
+        
+        self.present(logoutAlertController, animated: true, completion: nil)
     }
     
     @IBAction func clickSegment(_ sender: UISegmentedControl) {

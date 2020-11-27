@@ -61,9 +61,9 @@ class MemberDetailTableViewController: UITableViewController {
         
     }
     
-    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        self.view.endEditing(true)
-    }
+//    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+//        self.view.endEditing(true)
+//    }
     
     @IBAction func clickLocation(_ sender: Any) {
         let singleMemberMapVC = UIStoryboard(name: "Admin", bundle: nil).instantiateViewController(withIdentifier: "\(SingleMemberMapViewController.self)") as? SingleMemberMapViewController
@@ -74,8 +74,13 @@ class MemberDetailTableViewController: UITableViewController {
         self.navigationController?.pushViewController(singleMemberMapVC!, animated: true)
     }
     
-        
+    //did on Exit 按return 關閉小鍵盤
     @IBAction func close(_ sender: Any) {
+    }
+    
+    //用UI Tap Gesture 來點擊空白處收鍵盤
+    @IBAction func tapTouch(_ sender: Any) {
+        view.endEditing(true)
     }
     
     

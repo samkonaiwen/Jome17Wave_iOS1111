@@ -12,7 +12,7 @@
         <scene sceneID="TnC-qQ-5Lq">
             <objects>
                 <viewController modalPresentationStyle="fullScreen" id="eud-z1-FBX" customClass="LoginViewController" customModule="Jome17Wave_iOS" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="yRU-pB-4BY">
+                    <view key="view" contentMode="scaleToFill" id="yRU-pB-4BY" customClass="UIControl">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -32,11 +32,17 @@
                                         <rect key="frame" x="0.0" y="31.5" width="207" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <action selector="didEndOnExit:" destination="eud-z1-FBX" eventType="editingDidEndOnExit" id="bmi-AN-stR"/>
+                                        </connections>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="密碼" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PwN-lm-QdK">
                                         <rect key="frame" x="0.0" y="76.5" width="207" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                        <connections>
+                                            <action selector="didEndOnExit:" destination="eud-z1-FBX" eventType="editingDidEndOnExit" id="U0U-et-428"/>
+                                        </connections>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9V0-Du-B0T">
                                         <rect key="frame" x="0.0" y="121.5" width="207" height="30"/>
@@ -58,22 +64,22 @@
                                 </constraints>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="xg5-V0-Tih" userLabel="QuickSV">
-                                <rect key="frame" x="347.5" y="560" width="30" height="179"/>
+                                <rect key="frame" x="310.5" y="560" width="103.5" height="179"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UQM-go-2N6">
-                                        <rect key="frame" x="0.0" y="0.0" width="30" height="36"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="103.5" height="36"/>
                                         <connections>
                                             <action selector="clickAdmins:" destination="eud-z1-FBX" eventType="touchUpInside" id="1tB-If-pze"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ckd-JL-hZi">
-                                        <rect key="frame" x="0.0" y="71.5" width="30" height="36"/>
+                                        <rect key="frame" x="0.0" y="71.5" width="103.5" height="36"/>
                                         <connections>
                                             <action selector="clickAdmins:" destination="eud-z1-FBX" eventType="touchUpInside" id="vLW-B5-BPL"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YY4-MK-e1n">
-                                        <rect key="frame" x="0.0" y="143.5" width="30" height="35.5"/>
+                                        <rect key="frame" x="0.0" y="143.5" width="103.5" height="35.5"/>
                                         <connections>
                                             <action selector="clickAdmins:" destination="eud-z1-FBX" eventType="touchUpInside" id="FUs-lG-5AZ"/>
                                         </connections>
@@ -95,11 +101,16 @@
                             <constraint firstAttribute="trailing" secondItem="ced-3D-1Zl" secondAttribute="trailing" id="HC6-TI-q5T"/>
                             <constraint firstItem="VUK-ZH-6Jl" firstAttribute="centerX" secondItem="yRU-pB-4BY" secondAttribute="centerX" id="VKU-Lb-XYE"/>
                             <constraint firstItem="VUK-ZH-6Jl" firstAttribute="width" secondItem="yRU-pB-4BY" secondAttribute="width" multiplier="0.5" id="Wng-4x-n2N"/>
+                            <constraint firstItem="xg5-V0-Tih" firstAttribute="width" secondItem="yRU-pB-4BY" secondAttribute="width" multiplier="0.25" id="XQz-Ia-5RN"/>
                             <constraint firstAttribute="bottom" secondItem="ced-3D-1Zl" secondAttribute="bottom" id="ZDe-Hw-0Vk"/>
                             <constraint firstItem="VUK-ZH-6Jl" firstAttribute="centerY" secondItem="yRU-pB-4BY" secondAttribute="centerY" multiplier="1.1" id="ZVd-Kl-w0U"/>
                             <constraint firstItem="xg5-V0-Tih" firstAttribute="centerY" secondItem="yRU-pB-4BY" secondAttribute="centerY" multiplier="1.45" id="ijO-nb-I3e"/>
                             <constraint firstItem="ced-3D-1Zl" firstAttribute="leading" secondItem="yRU-pB-4BY" secondAttribute="leading" id="wen-2v-W7Y"/>
                         </constraints>
+                        <connections>
+                            <action selector="touchDown:" destination="eud-z1-FBX" eventType="valueChanged" id="kKo-yA-zJX"/>
+                            <action selector="touchDown:" destination="eud-z1-FBX" eventType="touchDown" id="p0h-Yg-qO2"/>
+                        </connections>
                     </view>
                     <connections>
                         <outlet property="accountTextField" destination="l6Q-tN-WIp" id="En9-wG-Kza"/>

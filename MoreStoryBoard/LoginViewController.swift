@@ -24,10 +24,17 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-
-
-        
     }
+    
+    
+    @IBAction func didEndOnExit(_ sender: Any) {
+    }
+    
+    @IBAction func touchDown(_ sender: Any) {
+        self.accountTextField.resignFirstResponder()
+        self.passwordTextField.resignFirstResponder()
+    }
+    
     
     @IBAction func clickAdmins(_ sender: UIButton) {
         if sender  == loginButtons[0] {
